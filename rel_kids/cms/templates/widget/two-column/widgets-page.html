@@ -1,0 +1,40 @@
+{% load staticfiles %}
+
+  <link rel="stylesheet" href="{% static './two-column/css/normalize.css' %}">
+  <link rel="stylesheet" href="{% static './two-column/css/two-column.min.css' %}">
+
+    <div class="container two-column">
+      <div class="row ">
+        <h3 class="two-column-title center-block">{{ two.title }}</h3>
+        <div class="col-lg-6 col-md-6  col-sm-12 col-xs-12  center-block ">
+          <div class="two-column-image"><img class="center-block" src="{{ two.get_img.0 }}" alt=""></div>
+          <p class="img-signature">{{ two.key1 }}</p>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="two-column-article center-block"><p >{{ two.text1 }}</p>
+          </div>
+        </div>
+        </div>
+        <div class="row original-block">
+          <div class="col-lg-6 col-md-6 col-sm-12  col-xs-12">
+            <div class="two-column-article center-block"><p>{{ two.text2 }}</p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12  col-xs-12">
+            <div class="two-column-image"><img class="center-block" src="{{ two.get_img.1 }}" alt=""></div>
+            <p class="img-signature">{{ two.key2 }}</p>
+          </div>
+        </div>
+        <div class="row fake-block ">
+          <div class="col-lg-6 col-md-6  col-sm-12 col-xs-12  ">
+            <div class="two-column-image center-block "><img class="center-block"  src="{{ two.get_img.1 }}" alt=""></div>
+            <p class="img-signature">{{ two.key2 }}</p>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="two-column-article center-block"><p >{{ two.text2 }}</p>
+            </div>
+          </div>
+        </div>
+    </div>
+
+

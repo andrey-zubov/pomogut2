@@ -1,0 +1,44 @@
+{% block content %}
+  <div class="article article-accordeon">
+    <h1 class="article__title headline-1">{{widget.title}}<a name="{{ widget.title }}"></a></h1>
+    {% if widget.text %}
+      <div class="article__description">
+        <p>
+          {{widget.text|safe}}
+        </p>
+      </div>
+    {% endif %}
+    <div class="article-accordeon__content">
+      <ul>
+        {% for q in faq %}
+          <li class="accordeon-item">
+          <p class="accordeon-item__title headline-3">
+            {{ q.title }}
+          </p>
+          <ul class="accordeon-item__links">
+            {% for article in q.faqlist_set.all %}
+            <li class="accordeon-item__link">
+              <p class="accordeon-item__link__title">
+                {{ article.title }}
+              </p>
+              <div class="accordeon-item__link__content">
+                <p>
+                  {{ article.text |safe}}
+                </p>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="article__buttons">
+      {% for link in widget.link.all %}
+        <a href="{{link.link}}" class="btn" target="{{link.target}}"
+          ><span>{{link.title}}</span></a
+        >
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

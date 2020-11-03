@@ -1,0 +1,288 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+    {% include 'help_bot/bootstrap_and_ko.html' %}
+
+    <div class="container">
+        <h3>Hello Chat statistic</h3>
+        <br>
+        <h6>Всего элементов дерева отслеживается: {{ my_data.nh_all_len }}.</h6>
+        <h6 class="mt-2">1. Статистика переходов по "дереву" чат-бота и посещаемости сайта:</h6>
+        <div class="container my-2">
+            <div class="row bg-light">
+                <div class="col-sm border"></div>
+                <div class="col-sm border">сумма</div>
+                <div class="col-sm border">на сайте</div>
+                <div class="col-sm border">в telegram</div>
+                <div>&nbsp</div>
+                <div class="col-sm border" style="background-color: lightgray">Посещаемость сайта</div>
+            </div>
+            <div class="row bg-light">
+                <div class="col-sm border">Всего</div>
+                <div class="col-sm border">{{ my_data.count_web_sum|add:my_data.count_tel_sum }}</div>
+                <div class="col-sm border">{{ my_data.count_web_sum }}</div>
+                <div class="col-sm border">{{ my_data.count_tel_sum }}</div>
+                <div>&nbsp</div>
+                <div class="col-sm border" style="background-color: lightgray">{{ my_data.site_open_sum }}</div>
+            </div>
+            <div class="row bg-light">
+                <div class="col-sm border">За день</div>
+                <div class="col-sm border">{{ my_data.stats_day.web_chat_count|add:my_data.stats_day.telegram_chat_count }}</div>
+                <div class="col-sm border">{{ my_data.stats_day.web_chat_count }}</div>
+                <div class="col-sm border">{{ my_data.stats_day.telegram_chat_count }}</div>
+                <div>&nbsp</div>
+                <div class="col-sm border" style="background-color: lightgray">{{ my_data.stats_day.site_open }}</div>
+            </div>
+            <div class="row bg-light">
+                <div class="col-sm border">За месяц</div>
+                <div class="col-sm border">{{ my_data.stats_month.web_chat|add:my_data.stats_month.telegram_chat }}</div>
+                <div class="col-sm border">{{ my_data.stats_month.web_chat }}</div>
+                <div class="col-sm border">{{ my_data.stats_month.telegram_chat }}</div>
+                <div>&nbsp</div>
+                <div class="col-sm border" style="background-color: lightgray">{{ my_data.stats_month.site_open }}</div>
+            </div>
+            <div class="row bg-light">
+                <div class="col-sm border">За год</div>
+                <div class="col-sm border">{{ my_data.stats_year.web_chat|add:my_data.stats_year.telegram_chat }}</div>
+                <div class="col-sm border">{{ my_data.stats_year.web_chat }}</div>
+                <div class="col-sm border">{{ my_data.stats_year.telegram_chat }}</div>
+                <div>&nbsp</div>
+                <div class="col-sm border" style="background-color: lightgray">{{ my_data.stats_year.site_open }}</div>
+            </div>
+        </div>
+        <br>
+        <h6 class="mt-2">2. Подробная статистика переходов по "дереву" чат-бота:</h6>
+        <input class="form-control" id="input_for_table_2" type="text" placeholder="Поиск по таблице ниже...">
+        <br>
+        <div class="container my-2">
+            <div class="row bg-light">
+                <div class="col-sm border"></div>
+                <div class="col-sm border">сумма</div>
+                <div class="col-sm border">на сайте</div>
+                <div class="col-sm border">в telegram</div>
+            </div>
+
+            {% load mptt_tags %}
+            <div class="root" id="table_2">
+                {% recursetree my_data.nodes %}
+                    <div>
+                        {% if node.get_children %}
+                            {% if node.get_ancestors.count >= 1 %}
+                                <div class="collapse" id="collapseExample{{ node.get_ancestors.last.id }}">
+                                    <a role="button"
+                                       data-toggle="collapse" href="#collapseExample{{ node.id }}"
+                                       aria-expanded="false" aria-controls="collapseExample{{ node.id }}">
+                                        <div class="row bg-light align-items-center border my-1">
+                                            <div class="col-sm">-- {{ node.name }} ({{ node.get_children.count }})</div>
+                                            <p class="col-sm">{{ node.statistic_web.count|add:node.statistic_telegram.count }}</p>
+                                            <p class="col-sm">{{ node.statistic_web.count }}</p>
+                                            <p class="col-sm">{{ node.statistic_telegram.count }}</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            {% else %}
+                                <a role="button"
+                                   data-toggle="collapse" href="#collapseExample{{ node.id }}"
+                                   aria-expanded="false" aria-controls="collapseExample{{ node.id }}">
+                                    <div class="row bg-light align-items-center border my-1">
+                                        <div class="col-sm">{{ node.name }} ({{ node.get_children.count }})</div>
+                                        <p class="col-sm">{{ node.statistic_web.count|add:node.statistic_telegram.count }}</p>
+                                        <p class="col-sm">{{ node.statistic_web.count }}</p>
+                                        <p class="col-sm">{{ node.statistic_telegram.count }}</p>
+                                    </div>
+                                </a>
+                            {% endif %}
+                        {% else %}
+                            <div class="collapse" id="collapseExample{{ node.get_ancestors.last.id }}">
+                                <div class="row bg-light align-items-center border my-1">
+                                    <div class="col-sm">-- {{ node.name }}</div>
+                                    <p class="col-sm">{{ node.statistic_web.count|add:node.statistic_telegram.count }}</p>
+                                    <p class="col-sm">{{ node.statistic_web.count }}</p>
+                                    <p class="col-sm">{{ node.statistic_telegram.count }}</p>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if not node.is_leaf_node %}
+                            <div class="children">
+                                {{ children }}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endrecursetree %}
+            </div>
+
+        </div>
+        <br>
+        <!-- Graphics-->
+        <h6>3. Посещаемость:</h6>
+        <div class="mt-2 container">
+            <div class="chartjs-size-monitor">
+                <div class="chartjs-size-monitor-expand">
+                    <div class=""></div>
+                </div>
+                <div class="chartjs-size-monitor-shrink">
+                    <div class=""></div>
+                </div>
+            </div>
+            <canvas id="canvas" style="display: block; height: 247px; width: 494px;" width="617" height="308"
+                    class="chartjs-render-monitor"></canvas>
+        </div>
+    </div>
+
+    <script>
+        {#// Perform a case-insensitive search for items in a table#}
+        $(document).ready(function () {
+            $("#input_for_table_2").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                if (value.length > 0) {
+                    $("#table_2 div").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                } else {
+                    //
+                }
+            });
+        });
+    </script>
+
+    <script>
+        'use strict';
+
+        window.chartColors = {
+            red: 'rgb(255, 99, 132)',
+            orange: 'rgb(255, 159, 64)',
+            yellow: 'rgb(255, 205, 86)',
+            green: 'rgb(75, 192, 192)',
+            blue: 'rgb(54, 162, 235)',
+            purple: 'rgb(153, 102, 255)',
+            grey: 'rgb(201, 203, 207)'
+        };
+
+        (function (global) {
+            var MONTHS = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+            var COLORS = ['#4dc9f6', '#f67019', '#f53794', '#537bc4', '#acc236', '#166a8f', '#00a950', '#58595b', '#8549ba'];
+            var Samples = global.Samples || (global.Samples = {});
+            var Color = global.Color;
+
+            Samples.utils = {
+                // Adapted from http://indiegamr.com/generate-repeatable-random-numbers-in-js/
+                srand: function (seed) {
+                    this._seed = seed;
+                },
+
+                rand: function (min, max) {
+                    var seed = this._seed;
+                    min = min === undefined ? 0 : min;
+                    max = max === undefined ? 1 : max;
+                    this._seed = (seed * 9301 + 49297) % 233280;
+                    return min + (this._seed / 233280) * (max - min);
+                },
+
+                numbers: function (config) {
+                    var cfg = config || {};
+                    var min = cfg.min || 0;
+                    var max = cfg.max || 1;
+                    var from = cfg.from || [];
+                    var count = cfg.count || 8;
+                    var decimals = cfg.decimals || 8;
+                    var continuity = cfg.continuity || 1;
+                    var dfactor = Math.pow(10, decimals) || 0;
+                    var data = [];
+                    var i, value;
+
+                    for (i = 0; i < count; ++i) {
+                        value = (from[i] || 0) + this.rand(min, max);
+                        if (this.rand() <= continuity) {
+                            data.push(Math.round(dfactor * value) / dfactor);
+                        } else {
+                            data.push(null);
+                        }
+                    }
+                    return data;
+                },
+
+                labels: function (config) {
+                    var cfg = config || {};
+                    var min = cfg.min || 0;
+                    var max = cfg.max || 100;
+                    var count = cfg.count || 8;
+                    var step = (max - min) / count;
+                    var decimals = cfg.decimals || 8;
+                    var dfactor = Math.pow(10, decimals) || 0;
+                    var prefix = cfg.prefix || '';
+                    var values = [];
+                    var i;
+
+                    for (i = min; i < max; i += step) {
+                        values.push(prefix + Math.round(dfactor * i) / dfactor);
+                    }
+                    return values;
+                },
+
+                months: function (config) {
+                    var cfg = config || {};
+                    var count = cfg.count || 12;
+                    var section = cfg.section;
+                    var values = [];
+                    var i, value;
+
+                    for (i = 0; i < count; ++i) {
+                        value = MONTHS[Math.ceil(i) % 12];
+                        values.push(value.substring(0, section));
+                    }
+                    return values;
+                },
+
+                color: function (index) {
+                    return COLORS[index % COLORS.length];
+                },
+
+                transparentize: function (color, opacity) {
+                    var alpha = opacity === undefined ? 0.5 : 1 - opacity;
+                    return Color(color).alpha(alpha).rgbString();
+                }
+            };
+            // INITIALIZATION
+            Samples.utils.srand(Date.now());
+        }(this));
+    </script>
+
+    <script>
+        var barChartData = {
+            labels: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+            datasets: [{
+                label: 'Чат на сайте',
+                backgroundColor: window.chartColors.green,
+                data: {{ my_data.graphics_web }}
+            }, {
+                label: 'Чат Telegram',
+                backgroundColor: window.chartColors.blue,
+                data: {{ my_data.graphics_tel }}
+            }, {
+                label: 'Посещение сайта',
+                backgroundColor: window.chartColors.yellow,
+                data: {{ my_data.graphics_site }}
+            }]
+        };
+        window.onload = function () {
+            var ctx = document.getElementById('canvas').getContext('2d');
+            window.myBar = new Chart(ctx, {
+                type: 'bar',
+                data: barChartData,
+                options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: 'График посещаемость за текущий год'
+                    },
+                    tooltips: {
+                        mode: 'index',
+                        intersect: true
+                    },
+                }
+            });
+        };
+
+    </script>
+
+{% endblock %}

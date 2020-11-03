@@ -1,0 +1,38 @@
+client_max_body_size 10M;
+
+upstream web {
+  ip_hash;
+  server web:8000;
+}
+
+#server {
+#    listen 80;
+#    server_name chatbot.genderperspectives.by;
+#
+#    return 301 https://$server_name$request_uri;
+#}
+
+server {
+    listen 8000 ssl;
+    server_name chatbot.genderperspectives.by;
+
+    ssl_certificate /etc/ssl/chatbot.genderperspectives.by_le2.crtca;
+    ssl_certificate_key /etc/ssl/chatbot.genderperspectives.by_le2.key;
+
+    access_log /logs/nginx-access.log;
+    error_log  /logs/nginx-error.log;
+
+    location /static/ {
+        autoindex on;
+        alias /src/static/;
+    }
+
+    location /media/ {
+        autoindex on;
+        alias /src/media/;
+    }
+
+    location / {
+        proxy_pass http://web/;
+    }
+}

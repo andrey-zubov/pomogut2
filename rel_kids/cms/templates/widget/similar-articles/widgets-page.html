@@ -1,0 +1,20 @@
+{% load staticfiles %}
+
+  <link rel="stylesheet" href="{% static './similar-articles/css/normalize.css' %}">
+  <link rel="stylesheet" href="{% static './similar-articles/css/similar-artcles.min.css' %}">
+
+
+    <div class="similar-articles container">
+      <div class="row ">
+        <h3 class="text-center similar-articles-title">{{ title }}</h3>
+        <ul>
+            {% for p in pages %}
+                <li><div class="col-lg-3 col-md-6 col-sm-6 col-lg-xs-12"><div class="similar-articles-image"><img class="center-block" src="{{ p.url_img }}" alt=""></div><h3 class="center-block">{{ p.title }}</h3><a class="button-link center-block" href="/{{ p.slug }}">Читать</a></div></li>
+            {% endfor %}
+        </ul>
+
+
+      </div>
+    </div>
+
+

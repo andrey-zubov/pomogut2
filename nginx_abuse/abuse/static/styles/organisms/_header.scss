@@ -1,0 +1,199 @@
+.header {
+  $self: &;
+  width: 100%;
+  z-index: 1;
+
+  &__content {
+    background-color: $white;
+  }
+
+  &__button {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 32px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 0;
+    height: 24px;
+
+    span {
+      &:before,
+      &:after {
+        position: absolute;
+        left: 0;
+        content: "";
+        display: block;
+      }
+    }
+
+    span,
+    span:before,
+    span:after {
+      width: 100%;
+      height: 2px;
+      background-color: $blue;
+      transition: all 0.6s;
+    }
+
+    span {
+      position: relative;
+
+      &::after {
+        top: 10px;
+      }
+
+      &::before {
+        top: -10px;
+      }
+    }
+
+    &--active {
+      span {
+        background-color: transparent;
+
+        &::after {
+          top: 0;
+          transform: rotate(-45deg);
+        }
+
+        &::before {
+          top: 0;
+          transform: rotate(45deg);
+        }
+      }
+    }
+  }
+
+  &--main {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    #{$self}__content {
+      background-color: transparent;
+    }
+  }
+
+  &--secondary {
+    background-color: $white;
+    box-shadow: 0 3px 43px #cccccc;
+
+    #{$self}__logo {
+    }
+    #{$self}__logo,
+    #{$self}__title,
+    #{$self}__phone {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      padding: 10px 0;
+    }
+
+    #{$self}__title {
+      justify-content: center;
+      opacity: 0.8;
+      text-transform: uppercase;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    #{$self}__phone {
+      margin-top: 10px;
+      p {
+        transition: opacity 0.5s;
+        color: $blue;
+        font-weight: 500;
+        font-size: 19px;
+        line-height: 38px;
+      }
+
+      &:hover {
+        p {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $lg) {
+  .header {
+    $self: &;
+    padding: 30px 15px;
+
+    &__button {
+      display: flex;
+      z-index: 2;
+    }
+
+    &__content {
+      background-color: $white-smoke;
+      align-items: center;
+      padding: 60px 0;
+      display: flex;
+      justify-content: center;
+      z-index: 1;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      min-height: 100vh;
+      transform: translateX(-100%);
+      transition: transform 0.5s;
+      overflow: auto;
+
+      &--visible {
+        transform: translateX(0);
+      }
+
+      &__nav {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+      }
+    }
+
+    &--main {
+      #{$self}__content {
+        background-color: $white;
+
+        .main-menu__navigation {
+          box-shadow: none;
+        }
+
+        .main-menu__navigation li {
+          border: none;
+
+          .link {
+            background-color: transparent;
+          }
+        }
+      }
+    }
+
+    &--secondary {
+      #{$self}__logo {
+        max-width: 200px;
+      }
+
+      #{$self}__title {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: $md) {
+  .header {
+    $self: &;
+
+    &--secondary {
+      #{$self}__phone {
+        display: none;
+      }
+    }
+  }
+}

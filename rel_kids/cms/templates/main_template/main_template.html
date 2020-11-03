@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomogut</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="/static/main_page/script/custom.js?123"></script>
+  <link rel="stylesheet" href="{% static './main_template/css/style.min.css' %}">
+  <link rel="shortcut icon" href="{% static './main_template/images/favicon.png' %}" type="image/png">
+	<script>
+        (function(w,d,u){
+                var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/60000|0);
+                var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+        })(window,document,'https://cdn.bitrix24.by/b5628119/crm/site_button/loader_5_9riglr.js');
+</script>
+  <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+       //var userip = "{{ myip }}";
+       $.ajax({
+          url:'/pomog/get_client_ip/',
+          success:function(data){
+                console.log(data)
+                ym(52901680, "init", {
+                id:52901680,
+                clickmap:true,
+                trackLinks:true,
+                accurateTrackBounce:true,
+                webvisor:true,
+                params:{'ip': data}
+                });
+          }
+       })
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/52901680" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+  {% if not phones %}
+  <script>
+    $.ajax({
+      url:'/pomog/get_data_fortemplate/',
+      success:function(data){
+        $('document').ready(function(){
+          data = JSON.parse(data)
+          $.each(data['cats'], function(){
+            $("<li><a href='/pomog/category/" + this[0] + "/" + this[1] + "'>" + this[2] + "</a></li>").insertBefore('#FAQs_header')
+          })
+          $('p#phone_number').text(data['phones'][0])
+          $('a#phone_number_').attr('href', "tel:" + data['phones'][0])
+          var footer = $('div.col-lg-2.col-md-2.col-sm-3.col-xs-12.links_to_navigation')
+          $.each(data['cats'].slice(0,5), function(){
+            $(footer[0]).append("<a href='/pomog/category/" + this[0] + "/" + this[1] + "'><p>" + this[2] + "</p></a>")
+          })
+          $.each(data['cats'].slice(5, 10), function(){
+           $("<a href='/pomog/category/" + this[0] + "/" + this[1] + "'><p>" + this[2] + "</p></a>").insertBefore('#FAQs_footer')
+          })
+          $.each(data['links'], function(){
+            $("<a href='" + this[1] + "'><p>" + this[0] + "</p></a>").insertBefore('#LinksFooter')
+          })
+        })
+      },
+    })
+  </script>
+  {% endif %}
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <nav class=" navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#header_menu">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        </div>
+
+          <div class=" collapse navbar-collapse row" id="header_menu">
+            <ul class="nav navbar-nav col-lg-8">
+              {% for c in cats %}
+                <li><a href="{% url 'razdel-handler' type='category' slug=c.slug id=c.id %}">{{ c.title }}</a></li>
+              {% endfor %}
+              <li id="FAQs_header"><a href="/o-nas/">О нас</a></li>
+              <li id="FAQs_header"><a href="/pomog/FAQs/">ЧАВО</a></li>
+              <li><a href="/pomog/Encyclopedia_of_knowledge/">Энциклопедия знаний</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right col-lg-2 col-lg-offset-2">
+              <li><a href="/pomog/Encyclopedia_of_knowledge/">Энциклопедия знаний</a></li>
+            </ul>
+          </div>
+
+      </div>
+    </nav>
+    <div class="container header">
+      <div class="row">
+      <div class="col col-lg-5 col-md-6 col-sm-6">
+        <a href="//kids.pomogut.by">
+          <img class="img-logo-desktop" src="{% static './main_template/images/header/logo-with-kids.svg' %}" alt="">
+          <img class="img-logo-tablet" src="{% static './main_template/images/header/logo-with-kids-mobile.svg' %}" alt="" style="
+    width: 330px;
+    height: 60px;
+">
+          <img class="img-logo-mobile" src="{% static './main_template/images/header/logo-with-kids-mobile.svg' %}" alt="" style="
+    width: 194px;
+    height: 40px;
+">
+        </a>
+      </div>
+
+      <div class="col-lg-3 col-lg-offset-4 col-md-4 col-md-offset-2 col-sm-6 header-buttons-section" >
+
+        <a  href="tel:88011001611" id="phone_number_">
+          <div class="header-phone-button">
+            <img class="img-phone-pic" src="{% static './main_template/images/header/icon-phone.svg' %}" alt="">
+            <p class="img-phone-number" id="phone_number">8 801 100 16 11</p>
+          </div>
+
+        </a>
+
+        <a href="/pomog/search_helper">
+          <div class="header-search-button">
+            <img src="{% static './main_template/images/header/icon-search.svg' %}" alt="">
+          </div>
+        </a>
+      </div>
+      </div>
+    </div>
+    <div class="stripe_under-header"></div>
+    <div class="content">
+      {% block article %}
+      {% endblock %}
+
+      {% block index %}
+      {% endblock %}
+
+      {% block widget %}
+      {% endblock %}
+
+      {% block error %}
+      {% endblock %}
+
+      {% block search %}
+      {% endblock %}
+
+      {% block faqs %}
+      {% endblock %}
+
+      {% block dev %}
+      {% endblock %}
+
+    </div>
+    <div class="row footer">
+      <div class="container">
+        <div class="col col-lg-3 col-md-4 col-sm-12 col-xs-12  ">
+          <p id="id_unicef">© 2019 UNICEF </p>
+          <p id="id_unicef_belarus">Детский Фонд ООН (ЮНИСЕФ) Представительство
+            в Республике Беларусь</p>
+                       <div class="links_to_follow">
+            <ul class="desktop">
+            <!---    <li><a href="#"><img src="{% static './main_template/images/footer/icon-facebook.svg' %}" alt=""></a></li>
+              <li><a href="#"><img src="{% static './main_template/images/footer/icon-twitter.svg' %}" alt=""></a></li>
+              <li><a href="#"><img src="{% static './main_template/images/footer/icon-vk.svg' %}" alt=""></a></li>
+              <li><a href="#"><img src="{% static './main_template/images/footer/icon-viber.svg' %}" alt=""></a></li>      -->
+            </ul>
+            <ul class="mobile">
+          <!---      <li><a href="#"><img src="{% static './main_template/images/footer-mobile/icon-facebook.svg' %}" alt=""></a></li>
+              <li><a href="#"><img src="{% static './main_template/images/footer-mobile/icon-twitter.svg' %}" alt=""></a></li>
+              <li><a href="#"><img src="{% static './main_template/images/footer-mobile/icon-vk.svg' %}" alt=""></a></li>
+              <li><a href="#"><img src="{% static './main_template/images/footer-mobile/icon-viber.svg' %}" alt=""></a></li>      -->
+            </ul>
+          </div>
+        </div>
+   <!---  <div class="col col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-sm-3 col-xs-12 links_to_navigation">
+          {% for c in cats %}
+            {% if forloop.counter < 6 %}
+              <a href="{% url 'razdel-handler' type='category' slug=c.slug id=c.id %}"><p>{{ c.title }}</p></a>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 links_to_navigation">
+          {% for c in cats|slice:'5:' %}
+            <a href="{% url 'razdel-handler' type='category' slug=c.slug id=c.id %}"><p>{{ c.title }}</p></a>
+          {% endfor %}
+          <a href="/pomog/FAQs/" id="FAQs_footer"><p>FAQs</p></a>
+        </div>
+
+      -->
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12  links_to_navigation">
+          {% for l in links %}
+            <a href="{{ l.link }}"><p>{{ l.title }}</p></a>
+          {% endfor %}
+          <p hidden id="LinksFooter">hello</p><!---LinksFooter-->
+
+        </div>
+        <div class="" style ="display:inline-block; color; #fff; text-align: center;
+  ">
+
+  <ul class="desktop" >
+ <li style =" border-radius: 100px;">  <a href="https://mvd.gov.by/ru"><img src="{% static './main_template/images/6Wn8HRdbO1o.png' %}" width="90" height="90" alt=""> <figcaption style ="color:#fff;"></figcaption></a>
+          <li style =" border-radius: 100px;">  <a href="https://nces.by"><img src="{% static './main_template/images/nceu18tibo.png' %}" width="80" height="80" alt=""><figcaption style ="color:#fff;"></figcaption></a>  </li>
+                  <li >  <a href="https://www.polskapomoc.gov.pl/Polish,Aid,160.html"><img src="{% static './main_template/images/image002.jpg' %}" width="112" height="68" alt=""><figcaption style ="color:#fff;"></figcaption></a></li>
+                  <li >  <a href="https://www.unicef.by/"><img src="{% static './main_template/images/UNICEF_ForEveryChild_White_Vertical_RGB_144ppi_RU.png' %}" bgcolor="#fff" width="121" height="70" alt=""><figcaption style ="color:#fff;"></figcaption></a></li>
+                 
+                  </li>
+                </ul>
+  </div>
+      </div>
+      <div class="under-footer">
+      </div>
+    </div>
+    {% if feincms_page %}
+         <!--- <script>
+            $.ajax({
+              url:'/pomog/counter_children/',
+              success:function(data){
+                data = JSON.parse(data)
+                $('div#counter1').append('<h2 class="counter">' + data[0] + '<p class="title-counter">какой-то текст</p></h2>')
+                $('div#counter2').append('<h2 class="counter">' + data[1] + '<p class="title-counter">какой-то текст</p></h2>')
+                $('div#counter3').append('<h2 class="counter">' + data[2] + '<p class="title-counter">какой-то текст</p></h2>')
+                console.log(data)
+              }
+            })
+          </script> -->
+          <link rel="stylesheet" href="{% static './counter/css/multi-counter-widget.min.css' %}">
+          <div class="multi-counter-widget">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-12 ">
+                  <div class="col-lg-4 col-md-4 col-sm-12  col-xs-12  " id="counter1"></div>
+                  <div class="col-lg-4  col-md-3 col-md-offset-1  col-sm-12 col-xs-12" id="counter2"></div>
+                  <div class="col-lg-4 col-md-3 col-md-offset-1  col-sm-12 col-xs-12 " id="counter3"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+      {% endif %}
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $(window).scroll(function() {
+            if ($(this).scrollTop() > 100) {
+              $('.scrollup').fadeIn();
+            } else {
+              $('.scrollup').fadeOut();
+            }
+          });
+          $('.scrollup').click(function() {
+            $("html, body").animate({
+              scrollTop: 0
+            }, 600);
+            return false;
+          });
+        });
+      </script>
+  <!---  <a href="#"  class="scrollup" ></a> -->
+	
+
+
+
+     <!---   <a href="{{ l.link }}"><p>{{ l.title }}</p></a>-->
+
+  </div>
+</body>
+
+</html>

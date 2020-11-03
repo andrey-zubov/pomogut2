@@ -1,0 +1,104 @@
+version: "3.5"
+
+services:
+  #  nginx:
+  #    image: nginx:alpine
+  #    container_name: nginx_web
+  #    restart: always
+  #    networks:
+  #      - botnet
+  #    ports:
+  #      # - "80:80"
+  #      # - "443:443"
+  #      - "8000:8000"
+  #    volumes:
+  #      - ./ButonBotDjango:/src
+  #      - ./config/nginx:/etc/nginx/conf.d
+  #      - ./logs:/logs
+  #      - /var/www/httpd-cert/www-root:/etc/ssl
+  #    depends_on:
+  #      - web
+
+  bot:
+    build:
+      context: .
+      dockerfile: compose/django/Dockerfile
+    container_name: telegram-bot
+    restart: always
+    #    networks:
+    #      - botnet
+    depends_on:
+      - db
+      - web
+    volumes:
+      - ./ButonBotDjango:/src
+    expose:
+      - "8000"
+    command: sh -c
+      "echo hello world && python3 help_bot/telega.py"
+    environment:
+      DEBUG: ${DEBUG}
+      POSTGRES_DATABASE: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_HOST: ${DB_HOST}
+      POSTGRES_PORT: ${DB_PORT}
+
+  web:
+    build:
+      context: .
+      dockerfile: compose/django/Dockerfile
+    container_name: django_web
+    restart: always
+    depends_on:
+      - db
+    volumes:
+      - ./ButonBotDjango:/src
+    #    networks:
+    #      - botnet
+    #    expose:
+    #      - "8000"
+    #      command: sh -c
+    #        "python3 manage.py makemigrations && python3 manage.py migrate && gunicorn config.wsgi -b 0.0.0.0:8000"
+    # new
+    ports:
+      - "8000:8000"
+    # new
+    command: bash -c
+      "python3 manage.py migrate
+      && python3 manage.py runserver 0.0.0.0:8000"
+    environment:
+      DEBUG: ${DEBUG}
+      POSTGRES_DATABASE: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_HOST: ${DB_HOST}
+      POSTGRES_PORT: ${DB_PORT}
+
+  db:
+    build:
+      context: compose/postgres/
+      dockerfile: Dockerfile
+      args:
+        psql_pass: ${DB_PASSWORD}
+        psql_db: ${DB_NAME}
+        psql_user: ${DB_USER}
+    image: postgres
+    #    networks:
+    #      - botnet
+    # new
+    ports:
+      - '5432:5432'
+    restart: always
+    container_name: cel_postgres
+
+#networks:
+#  botnet:
+#    driver: bridge
+#    driver_opts:
+#      "com.docker.network.bridge.enable_icc": "true"
+#      "com.docker.network.bridge.enable_ip_masquerade": "true"
+#      "com.docker.network.bridge.host_binding_ipv4": "0.0.0.0"
+#      "com.docker.network.bridge.name": "br0"
+#      "com.docker.network.driver.mtu": "1500"
+

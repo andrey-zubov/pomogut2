@@ -1,0 +1,78 @@
+{% load staticfiles %}
+
+
+  <link rel="stylesheet" href="{% static './single-column/css/normalize.css' %}">
+  <link rel="stylesheet" href="{% static './single-column/css/single-column.min.css' %}">
+
+
+
+    <div class="container single-column">
+    <div class="row ">
+      <div class=" ">
+        <h2 class="single-column-title">{{ widget.title }}</h2>
+        <iframe class="center-block map" src='/pomog/load_my_map_please/' width="950px" height="550px" frameborder="no"></iframe>
+        </div>
+      </div>
+      <div class="row">
+        <div class=" ">
+          {{ text }}
+        </div>
+      </div>
+      <div class="row list">
+        <div class=" ">
+          <h4>{{ widget.title2 }}</h4>
+          <ul>
+            {{ point }}
+          </ul>
+        </div>
+      </div>
+  </div>
+
+
+
+   <style media="screen">
+  .map{
+    margin-top: 35px;
+    margin-bottom: 50px;
+  }
+    @media screen and (max-width: 1200px) {
+
+      .map {
+        width: 950px;
+      }
+
+    }
+
+    @media screen and (max-width: 991px) {
+
+
+      .map {
+        width: 730px;
+      }
+
+    }
+
+    @media screen and (max-width: 767px) {
+
+
+      .map {
+        width: 420px;
+        height: 253px;
+        margin-top: 25px;
+        margin-bottom: 40px;
+      }
+    }
+
+    @media screen and (max-width: 479px) {
+
+
+      .map {
+        width: 290px;
+        height: 153px;
+        margin-top: 25px;
+        margin-bottom: 40px;
+      }
+
+    }
+  </style>
+

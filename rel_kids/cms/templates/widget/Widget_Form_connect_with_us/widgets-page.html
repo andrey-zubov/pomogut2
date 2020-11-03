@@ -1,0 +1,66 @@
+{% load staticfiles %}
+
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script type="text/javascript" src="{% static './Widget_Form_connect_with_us/script/script.js' %}"></script>
+  <link rel="stylesheet" href="{% static './Widget_Form_connect_with_us/css/normalize.css' %}">
+  <link rel="stylesheet" href="{% static './Widget_Form_connect_with_us/css/input-form.min.css' %}">
+  <div class="feedback">
+    <div class="container">
+      <div class="row">
+        <div class=" ">
+          <h3  class="text-center title-feedback">Свяжитесь с нами</h3>
+          <form  id="feedback-form">
+            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+              <label for="username">Фамилия Имя Отчество*</label>
+              <input class="form-control" type="text" name="username" value="" id="name">
+            </div>
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label for="">Цель сообщения*</label>
+                <select class="form-control" id="sel1">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                </select>
+              </div>
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label for="">Телефон*</label>
+                <input class="form-control" type="text" name="" value="" id="phone">
+              </div>
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label for="">Адрес электронной почты*</label>
+                <input class="form-control" type="text" name="" value="" id="email">
+              </div>
+              <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <label for="comment">Текст сообщения</label>
+                <textarea class="form-control" rows="8" id="comment"></textarea>
+              </div>
+              <div class="checkbox-style">
+                <label for="checkbox" >Подтверждение конфиденциальности *</label>
+                <label for="checkbox-id" id="checkbox-id2"><input id="checkbox-id" type="checkbox" value="">Я принимаю условия обработки персональных данных</label>
+                <div class="captcha">
+                  <div class="g-recaptcha " data-sitekey="6LfeZrMUAAAAAIyw53o4Ri5j_emaUPVRDhqZodWl"></div>
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <button   type="button" class="btn center-block ">Отправить сообщение</button>
+                  <input id="btn-hidden-for-modal"  data-toggle="modal" data-target="#myModal" type="button"  class="center-block btn btn-success button-form"  name="Отправить сообщение" value="Отправить сообщение">
+              </div>
+              <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content modal-window">
+                      <h1 >Спасибо!</h1>
+                      <h2> Ваше сообщение отправлено</h2>
+                      <img  src="{% static './Widget_Form_connect_with_us/images/modal/check-mark.svg' %}" alt="">
+                      <label data-dismiss="modal"><img src="{% static './Widget_Form_connect_with_us/images/modal/cross.svg' %}" alt=""></label>
+                  </div>
+                </div>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>

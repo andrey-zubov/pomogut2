@@ -1,0 +1,30 @@
+{% extends './main_template/main_template.html' %}
+{% load staticfiles %}
+{% block widget %}
+
+
+<link rel="stylesheet" href="{% static './title/css/normalize.css' %}">
+  <link rel="stylesheet" href="{% static './title/css/title.min.css' %}">
+
+  <div class="container single-column">
+    <div class="row ">
+      <div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 ">
+	{% if feincms_page.title|length > 420 %}
+	<h2 class="text-center">{{ feincms_page.title|slice:':42' }}...</h2>
+	{% else %}
+        <h2 class="text-center">{{ feincms_page.title }}</h2>
+	{% endif  %}
+        </div>
+      </div>
+  </div>
+
+
+<div id="content">
+    {% block content %}
+    {% for content in feincms_page.content.main %}
+        {{ content.render }}
+    {% endfor %}
+    {% endblock %}
+</div>
+
+{% endblock %}

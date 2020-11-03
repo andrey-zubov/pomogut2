@@ -1,0 +1,19 @@
+{% extends './main_template/main_template.html' %}
+{% load staticfiles %}
+{% block dev %}
+
+  <script type="text/javascript" src="{% static './page-in-development/script/script.js' %}"></script>
+  <link rel="stylesheet" href="{% static './page-in-development/css/normalize.css' %}">
+  <link rel="stylesheet" href="{% static './page-in-development/css/page-in-development.min.css' %}">
+
+      <div class="page-in-developement container">
+        <div class="row">
+          <div class="col lg-12 col-sm-12 col-md-12 col-xs-12">
+            <div class="center-block page-in-developement-image"><img src="{% static './page-in-development/images/area_development.jpg' %}" alt="" ></div>
+            <h3 class="text-center">Раздел находится в разработке </h3>
+            <p>Какой-то текст...</p>
+          </div>
+        </div>
+      </div>
+
+{% endblock %}

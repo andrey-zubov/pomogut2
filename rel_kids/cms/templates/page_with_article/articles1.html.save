@@ -1,0 +1,135 @@
+{% extends './main_template/main_template.html' %}
+{% load staticfiles %}
+{% block article %}
+
+
+  <link rel="stylesheet" type="text/css" href="{% static './page_with_article/slick/slick.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static './page_with_article/slick/slick-theme.css' %}" />
+  <link rel="stylesheet" href="{% static './page_with_article/css/style_page.min.css' %}">
+
+{% if type == 'category' %}
+  <div class=" categories-block">
+    <h1 class="text-center">Мы здесь, чтобы помочь вам во всем!</h1>
+    <div class="categories container " id="categories">
+
+    </div>
+  </div>
+  <div class="tooth">
+  </div>
+{% endif %}
+    <div class="container categories_data">
+          <div class="row">
+            <div class="col col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1  ">
+                {% if type == 'category' %}
+                    <h2>Посмотри статьи по теме:</h2>
+                {% else %}
+                <h2>{{ title_block }}</h2>
+                    <!--<h2>&nbsp;</h2>-->
+                {% endif %}
+            </div>
+          </div>
+          <div class="for-slick"></div>
+      <div class="row  articles">
+        {% for p in pages %}
+          {% if forloop.counter|add:2|divisibleby:3 %}
+            <a href="/{{ p.slug }}" class="col-lg-4 col-md-4 col-sm-4 col-xs-6 left header-kids">
+            <div><img class="articles-image center-block"  width="100%" height="auto" src="{{ p.url_img }}" alt=""></div>
+	{% if p.title|length > 42 %}
+            <div class="title-kids"><h3>{{ p.title|slice:":42" }}...</h3></div>
+	{% else %}
+	    <div class="title-kids"><h3>{{ p.title }}</h3></div>
+	{% endif %}
+            <div class="articles-button"><p>Читать</p></div>
+        </a>
+          {% endif %}
+          {% if forloop.counter|add:1|divisibleby:3 %}
+            <a href="/{{ p.slug }}"  class="col col-lg-4 col-md-4  col-sm-4  col-xs-6 header-teenagers">
+            <div><img class="articles-image center-block"  width="100%" height="auto" src="{{ p.url_img }}" alt=""></div>
+            
+            <div class="articles-button"><p>Читать</p></div>
+        </a>
+          {% endif %}
+          {% if forloop.counter|divisibleby:3 %}
+            <a href="/{{ p.slug }}"  class="col col-lg-4 col-md-4  col-sm-4  col-xs-6 right header-adults">
+            <div><img class="articles-image center-block"  width="100%" height="auto" src="{{ p.url_img }}" alt=""></div>
+            <div class="title-adults"><h3>{{ p.title }}</h3></div>
+            <div class="articles-button"><p>Читать</p></div>
+        </a>
+          {% endif %}
+          {% if forloop.counter|divisibleby:6 %}
+
+            <div class="col col-lg-12 col-md-12 col-sm-12   breakdown-articles center-block ">
+              <h2 class="text-center center-block">Разговор помогает! Мы здесь для вас! </h2>
+              <p class="text-center center-block">Никакая проблема не является слишком большой или слишком маленькой.
+          Мы здесь для вас. Звонок бесплатный и анонимный!</p>
+              <p class="text-center center-block" style="
+              margin-top: 0px;
+              margin-bottom: 0px;
+          ">24/7</p>
+              <a href="tel:8&nbsp;801&nbsp;100 16 11" class="text-center breakdown-articles-buttons  center-block " style="
+              margin-top: 0px;
+          ">
+                  <div class="phone-number "><img src="/static/page_with_article/images/breakdown-phone.svg" alt=""><h5>8 801 100 16 11</h5></div>
+                      </a>
+                      <p class="text-center center-block" style="
+              margin-top: 0px;
+              margin-bottom: 0px;
+          ">8.00-20.00</p>
+              <a href="tel:8&nbsp;801&nbsp;100 16 11" class="text-center breakdown-articles-buttons  center-block " style="
+              margin-top: 0px;
+          ">
+                      <div class="phone-number "><img src="/static/page_with_article/images/breakdown-phone.svg" alt=""><h5>8 801 201 55 55</h5></div>
+              </a>
+            </div>
+
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="{% static './page_with_article/slick/slick.min.js' %}"></script>
+    <script type="text/javascript" src="{% static './page_with_article/script/script.js' %}"></script>
+    <script>
+    jQuery(function($) {
+        function fix_size() {
+            var images = $('.articles a div img');
+            images.each(setsize);
+
+            function setsize() {
+                var img = $(this),
+                img_dom = img.get(0),
+                container = img.parents('.articles a div');
+                if (img_dom.complete) {
+                resize();
+            } else img.one('load', resize);
+
+            function resize() {
+                if ((container.width() / container.height()) < (img_dom.width / img_dom.height)) {
+                img.width('100%');
+                img.height('auto');
+                return;
+                }
+                img.height('100%');
+                img.width('auto');
+                }
+            }
+        }
+        $(window).on('resize', fix_size);
+        fix_size();
+    });
+    </script>
+    <script type="text/javascript" >
+        var size = 48,
+        newsContent= $('.title-kids .title-teenagers '),
+        newsText = newsContent.text();
+
+    if(newsText.length > size){
+      newsContent.text( newsText.slice(0, size) + ' ...');
+    }
+    </script>
+
+
+{% endblock %}

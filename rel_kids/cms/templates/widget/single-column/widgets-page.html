@@ -1,0 +1,32 @@
+{% load staticfiles %}
+
+  <link rel="stylesheet" href="{% static './single-column/css/normalize.css' %}">
+  <link rel="stylesheet" href="{% static './single-column/css/single-column.min.css' %}">
+
+
+  <div class="container single-column">
+    <div class="row ">
+      <div class=" ">
+        <h2 class="single-column-title">{{ widget.title }}</h2>
+        <div class="single-column-image center-block">
+          <img class="center-block" src="{{ widget.get_img }}" alt="">
+        </div>
+        <p class="img-signature">{{ widget.under_img }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class=" ">
+          {{ text }}
+        </div>
+      </div>
+      <div class="row list">
+        <div class="">
+          <h4>{{ widget.title2 }}</h4>
+          <ul>
+            {{ point }}
+          </ul>
+        </div>
+      </div>
+  </div>
+
+

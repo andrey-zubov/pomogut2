@@ -1,0 +1,153 @@
+.article {
+  padding-bottom: 20px;
+  border-bottom: 1px solid $light-gray;
+  margin-top: 30px;
+
+  &:nth-of-type(1) {
+    margin-top: 0;
+  }
+
+  &__title {
+    padding: 0 25px;
+    text-transform: uppercase;
+  }
+
+  &__image {
+    &-wrapper {
+      margin-top: 25px;
+      padding-bottom: 382/570 * 100%;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    &-caption {
+      color: #fff;
+      font-weight: 700;
+      background: #55be8d;
+      padding: 20px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 80%;
+      border-radius: 0 44px 0 0;
+      transition: opacity 0.3s ease-out;
+
+      p {
+        font-size: 21px;
+        line-height: 25px;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &__description {
+    a {
+      border-bottom: 1px solid $gray;
+      transition: all 0.5s;
+      display: inline;
+
+      &:hover {
+        opacity: 0.7;
+        border-color: transparent;
+      }
+    }
+
+    p {
+      margin: 20px 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__buttons {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+
+    .btn {
+      margin: 0 10px;
+      margin-bottom: 10px;
+    }
+
+    &--center {
+      justify-content: center;
+    }
+
+    &--left {
+      justify-content: flex-start;
+    }
+  }
+
+  &__list {
+    margin-left: 20px;
+    margin-top: 20px;
+    list-style-type: disc;
+
+    li {
+      // position: relative;
+
+      // &:before {
+      //   content: "";
+      //   position: absolute;
+      //   background-color: $gray;
+      //   top: 7px;
+      //   left: -14px;
+      //   width: 4px;
+      //   height: 4px;
+      //   border-radius: 50%;
+      // }
+    }
+  }
+
+  &__select {
+    margin: 40px 0 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .select2 {
+      margin-right: 30px;
+
+      &:last-child() {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &-map {
+    border: none;
+  }
+}
+
+@media (max-width: $lg) {
+  .article {
+    &:nth-of-type(1) {
+      margin-top: 20px;
+    }
+
+    &__image-caption {
+      p {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: $lg) {
+  .article {
+    &__image-caption {
+      border-radius: 0 44px 0 0;
+
+      p {
+        font-size: 18px;
+      }
+    }
+  }
+}

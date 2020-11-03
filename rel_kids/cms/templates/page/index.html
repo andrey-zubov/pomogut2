@@ -1,0 +1,189 @@
+{% extends './main_template/main_template.html' %}
+{% load staticfiles %}
+{% block index %}
+
+
+  <script type="text/javascript" src="{% static './main_page/script/index.js' %}">  </script>
+  <link rel="stylesheet" href="{% static './main_page/css/style.min.css' %}">
+  <link rel="stylesheet" href="{% static './page_with_article/css/style_page.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static './page_with_article/slick/slick.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static './page_with_article/slick/slick-theme.css' %}" />
+
+
+  <div class="row ">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 line"></div>
+  </div>
+  <!--<div class="row sections">
+    <div class="container center-block">
+      <div class="row   col col-lg-12 col-md-12 col-sm-6">
+        <div class="  col col-lg-5 col-lg-offset-2 col-md-3 col-md-offset-2 section-teenagers  sections-pattern_two"><a href="{% url 'razdel-handler' type='category' slug=cats.1.slug id=cats.1.id %}"><img  src="{% static './main_page/images/sections/teenagers/pink.svg' %}" alt=""/><div class="inside-block-section center-block"><img src="{{ cats.1.url_img }}" alt=""/><p>{{ cats.1.title }}</p></div></a></div>
+        <div class="col col-lg-5 col-lg-offset-2 col-md-3 col-md-offset-1 section-parents   sections-pattern_three"><a href="{% url 'razdel-handler' type='category' slug=cats.3.slug id=cats.3.id %}"><img src="{% static './main_page/images/sections/parents/red.svg' %}" alt=""><div class="inside-block-section center-block"><img src="{{ cats.3.url_img }}" alt=""/><p>{{ cats.3.title }}</p></div></a></div>
+      </div>
+      <div class="row  col col-lg-12 col-md-12 col-sm-6 col-xs-6   center-block  ">
+        <div class="col col-lg-3 col-md-12 section-kids   sections-pattern_one "><a href="{% url 'razdel-handler' type='category' slug=cats.0.slug id=cats.0.id %}"><img src="{% static './main_page/images/sections/kids/green.svg' %}" alt=""><div class="inside-block-section center-block"><img src="{{ cats.0.url_img }}" alt=""/><p>{{ cats.0.title }}</p></div></a></div>
+        <div class="col col-lg-5 col-lg-offset-2 col-md-12 col-md-offset-1 col-sm-12  section-adults sections-pattern_one"><a href="{% url 'razdel-handler' type='category' slug=cats.2.slug id=cats.2.id %}"><img src="{% static './main_page/images/sections/adults/yellow.svg' %}" alt=""><div class="inside-block-section center-block"><img src="{{ cats.2.url_img }}" alt=""/><p>{{ cats.2.title }}</p></div></a></div>
+        <div class="col col-lg-3 col-md-12 col-lg-offset-1   section-schools sections-pattern_two "><a href="{% url 'razdel-handler' type='category' slug=cats.4.slug id=cats.4.id %}"><img src="{% static './main_page/images/sections/schools/blue.svg' %}" alt=""><div class="inside-block-section center-block"><img src="{{ cats.4.url_img }}" alt=""/><p>{{ cats.4.title }}</p></div></a></div>
+      </div>
+
+      <div class="row col col-lg-12 col-md-12 col-sm-6 col-xs-6   center-block  sections_fake">
+        <div class="col col-lg-5 col-lg-offset-2 col-md-3 col-md-offset-2 col-sm-12 center-block section-teenagers  sections-pattern_two"><a href="{% url 'razdel-handler' type='category' slug=cats.1.slug id=cats.1.id %}"><img src="{% static './main_page/images/sections/teenagers/pink.svg' %}" alt=""><div class="inside-block-section center-block"><img src="{{ cats.1.url_img }}" alt=""/><p>{{ cats.1.title }}</p></div></a></div>
+        <div class="col col-lg-5 col-lg-offset-2 col-md-3 col-md-offset-1 col-sm-12 section-parents  sections-pattern_three"><a href="{% url 'razdel-handler' type='category' slug=cats.3.slug id=cats.3.id %}"><img src="{% static './main_page/images/sections/parents/red.svg' %}" alt=""><div class="inside-block-section center-block"><img src="{{ cats.3.url_img }}" alt=""/><p>{{ cats.3.title }}</p></div></a></div>
+      </div>
+
+      <div class="section-fake_xs col-xs-12 ">
+        <div class="sections-pattern_one section-kids center-block"><a href="{% url 'razdel-handler' type='category' slug=cats.0.slug id=cats.0.id %}"><img src="{% static './main_page/images/sections/kids/green.svg' %}" alt=""><div class="inside-block-section center-block"><img src="{{ cats.0.url_img }}" alt=""/><p class="kids-age">{{ cats.0.title }}</p></div></a></div>
+        <div class=" sections-pattern_two section-teenagers center-block"><a href="{% url 'razdel-handler' type='category' slug=cats.1.slug id=cats.1.id %}"><img src="{% static './main_page/images/sections/teenagers/pink.svg' %}" alt=""><div class="inside-block-section center-block"><img src="{{ cats.1.url_img }}" alt=""/><p class="teen-age">{{ cats.1.title }}</p></div></a></div>
+        <div class="sections-pattern_one section-adults center-block"><a href="{% url 'razdel-handler' type='category' slug=cats.2.slug id=cats.2.id %}"><img src="{% static './main_page/images/sections/adults/yellow.svg' %}" alt=""><div class="inside-block-section center-block"><img src="{{ cats.2.url_img }}" alt=""/><p class="adult-age">{{ cats.2.title }}</p></div></a></div>
+        <div class="sections-pattern_three section-parents center-block"><a href="{% url 'razdel-handler' type='category' slug=cats.3.slug id=cats.3.id %}"><img src="{% static './main_page/images/sections/parents/red.svg' %}" alt=""><div class="inside-block-section center-block"><img src="{{ cats.3.url_img }}" alt=""/><p >{{ cats.3.title }}</p></div></a></div>
+        <div class="sections-pattern_two section-schools center-block"><a href="{% url 'razdel-handler' type='category' slug=cats.4.slug id=cats.4.id %}"><img src="{% static './main_page/images/sections/schools/blue.svg' %}" alt=""><div class="inside-block-section center-block"><img src="{{ cats.4.url_img }}" alt=""/><p>{{ cats.4.title }}</p></div></a></div>
+      </div>
+
+    </div>
+  </div>-->
+  <div class="row sections intro">
+      <div class="container categories_data categories-block">
+
+      <h1 class="text-center"  style="margin-top: 10px;  font-size: 30px;   line-height: 35px;"> Интернет – это быстрый доступ к различной информации, общение с друзьями и близкими,
+возможность оперативно обмениваться новостями и быть в курсе последних событий.<br>
+ Все эти возможности неразделимо связаны с различными рисками. Как и в реальной жизни, находясь в интернет важно оставаться в БЕЗОПАСНОСТИ. Иногда твои собеседники могут оказаться не теми, за кого они себя выдают. <br> </h1>
+
+    <div class="articles ">
+  <div class="col col-lg-12 col-md-12 col-sm-12   breakdown-articles center-block "  style="height: 270px;  margin-top: 68px;">
+      <h2 class="text-center center-block">Давай разберемся вместе </h2>
+          <a  href="http://kids.pomogut.by/pomog/search_helper/" class="text-center breakdown-articles-buttons  center-block ">
+          <div  class="phone-number "><img src="{% static './main_template/images/header/icon-search.svg' %}"  alt=""><h5>Поиск</h5></div>
+      </a>
+  </div>
+
+      </div>
+
+</div>
+
+
+
+    <div class="container center-block">
+        <div class="row center-block intro-child ">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 section-teenagers  sections-pattern">
+                <a href="{% url 'razdel-handler' type='category' slug=cats.1.slug id=cats.1.id %}" class="girls-links ">
+                    <img src="{{ cats.1.url_img }}" alt="">
+                    <div class="layer"></div>
+                    <p class="girls-links-text">{{ cats.1.title }}</p>
+
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12 section-parents  sections-pattern">
+                <a href="{% url 'razdel-handler' type='category' slug=cats.3.slug id=cats.3.id %}" class="girls-links">
+                    <img src="{{ cats.3.url_img }}" alt="">
+                    <div class="layer"></div>
+                    <p class="girls-links-text">{{ cats.3.title }}</p>
+                </a>
+            </div>
+            <div class="link-break"></div>
+            <div class="col-md-4 col-sm-12 col-xs-12 section-kids   sections-pattern">
+                <a href="{% url 'razdel-handler' type='category' slug=cats.0.slug id=cats.0.id %}" class="girls-links">
+                    <img src="{{ cats.0.url_img }}" alt="">
+                    <div class="layer"></div>
+                    <p class="girls-links-text">{{ cats.0.title }}</p>
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-12 col-xs-12  section-adults sections-pattern">
+                <a href="{% url 'razdel-handler' type='category' slug=cats.2.slug id=cats.2.id %}" class="girls-links">
+                    <img src="{{ cats.2.url_img }}" alt="">
+                    <div class="layer"></div>
+                    <p class="girls-links-text">{{ cats.2.title }}</p>
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-12 col-xs-12  section-schools sections-pattern">
+                <a href="{% url 'razdel-handler' type='category' slug=cats.4.slug id=cats.4.id %}" class="girls-links">
+                    <img src="{{ cats.4.url_img }}" alt="">
+                    <div class="layer"></div>
+                    <p class="girls-links-text">{{ cats.4.title }}</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container categories_data categories-block">
+      <div class="articles ">
+  <div class="col col-lg-12 col-md-12 col-sm-12   breakdown-articles center-block " style="
+    margin-bottom: 20px;
+">
+    <h2 class="text-center center-block">Разговор помогает! Мы здесь для вас! </h2>
+    <p class="text-center center-block">Никакая проблема не является слишком большой или слишком маленькой.
+Мы здесь для вас. Звонок бесплатный и анонимный!</p>
+    <p class="text-center center-block" style="
+    margin-top: 0px;
+    margin-bottom: 0px;
+">24/7</p>
+    <a href="tel:8&nbsp;801&nbsp;100 16 11" class="text-center breakdown-articles-buttons  center-block " style="
+    margin-top: 0px;
+">
+        <div class="phone-number "><img src="/static/page_with_article/images/breakdown-phone.svg" alt=""><h5>8 801 100 16 11</h5></div>
+            </a>
+            <p class="text-center center-block" style="
+    margin-top: 0px;
+    margin-bottom: 0px;
+">8.00-20.00</p>
+    <a href="tel:8&nbsp;801&nbsp;100 16 11" class="text-center breakdown-articles-buttons  center-block " style="
+    margin-top: 0px;
+">
+            <div class="phone-number "><img src="/static/page_with_article/images/breakdown-phone.svg" alt=""><h5>8 801 201 55 55</h5></div>
+    </a>
+  </div>
+
+      </div>
+
+      </div>
+    <!-- <div class="articles ">
+     <div class="row container ">
+      <div class=" categories_data">
+    <div class="col col-lg-12 col-md-12 col-sm-12   breakdown-articles center-block ">
+        <h2 class="text-center center-block">Разговор помогает! Мы здесь для вас </h2>
+        <p class="text-center center-block">Никакая проблема не является слишком большой или слишком маленькой. Мы здесь 24 часа в сутки, 7 дней в неделю</p>
+        <a  href="tel:{{ phones.0 }}" class="text-center breakdown-articles-buttons  center-block ">
+            <div  class="phone-number "><img src="{% static './page_with_article/images/breakdown-phone.svg' %}" alt=""><h5>{{ phones.0 }}</h5></div>
+        </a>
+    </div>
+        </div>
+  </div>
+  </div> -->
+  </div>
+
+
+
+
+  <div class="under-section">
+  </div>
+{% for b in blocks %}
+  {% if forloop.counter|divisibleby:2 %}
+    <div class="row block-2">
+      <div class="container">
+        <div class="col-lg-6 col-md-6  block-2-img   col-lg-push-6 col-sm-12 col-md-push-6 text-center col-xs-12 ">
+       <img src="{{ b.get_img }}" alt="">
+        </div>
+          <div class="col col-lg-6  col-lg-pull-6 col-md-pull-6 col-sm-12 col-xs-12 ">
+            <h2>{{ b.title }}</h2>
+            <p id="personal_data_block-2">{{ b.text }}</p>
+            <a id="personal_data_button_block-2" href="{% url 'razdel-handler' type='block' slug=b.slug id=b.id %}"><div class="block-1-button">{{ b.name_button }}</div></a>
+          </div>
+        </div>
+      </div>
+  {% else %}
+    <div class="row block-1">
+      <div class="container ">
+        <div class="center-block">
+          <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12 block-1-img ">
+            <img class="block-1-img" width="100%" src="{{ b.get_img }}" alt="">
+          </div>
+          <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+            <h2>{{ b.title }}</h2>
+            <p id="personal_data_block-1">{{ b.text }}</p>
+            <a id="personal_data_button_block-1" href="{% url 'razdel-handler' type='block' slug=b.slug id=b.id %}"><div class="block-1-button">{{ b.name_button }}</div></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
+{% endblock %}

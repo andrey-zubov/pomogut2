@@ -1,0 +1,221 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomogut v.2</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="{% static './MainPage/script/script.js' %}"></script>
+  <link rel="stylesheet" type="text/css" href="{% static './MainPage/slick/slick.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static './MainPage/slick/slick-theme.css' %}" />
+  <link rel="stylesheet" href="{% static './MainPage/css/normalize.css' %}">
+  <link rel="stylesheet" href="{% static './MainPage/css/pomogut-style.min.css' %}">
+  <link rel="stylesheet" href="{% static './MainPage/fonts/stylesheet.css' %}">
+  <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+       //var userip = "{{ myip }}";
+       $.ajax({
+          url:'/pomog/get_client_ip/',
+          success:function(data){
+                console.log(data)
+                ym(52901680, "init", {
+                id:52901680,
+                clickmap:true,
+                trackLinks:true,
+                accurateTrackBounce:true,
+                webvisor:true,
+                params:{'ip': data}
+                });
+          }
+       })
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/52901680" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+</head>
+
+
+<body>
+
+  <header>
+    <div class="row">
+        <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12 center-block header-logo">
+          <img class="center-block"  src="{% static './MainPage/images/header/logo-pomogut.svg' %}" alt="">
+            <h3 class="text-center col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">Описание проекта в несколькиx словах (желательно не больше трех строк)</h3>
+             <a  href="#elm" class=" go_to btn btn-write center-block" type="button" ><p>Наши проекты</p></a>
+      </div>
+    </div>
+  </header>
+  <div class="about container">
+    <div class="row">
+      <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 about-title center-block">
+        <p>Проект <b>POMOGUT.BY</b> — это объединение усилий и возможностей государства и гражданского общества.
+        Создавая его, мы не ставили перед собой цели заставить отказаться от употребления наркотиков.
+        <b>Наша задача</b> — помочь тем, кто оказался один на один со своей бедой и потерялся в океане обещаний,
+        предложений и услуг.</p>
+      </div>
+    </div>
+    <div class=" about-logos container ">
+        <div ><a href="http:\\www.unodc.org"><img src="{% static './MainPage/images/about/UNODC.svg' %}" alt=""></a></div>
+        <div><a href="http:\\www.belhard.com/ru"><img src="{% static './MainPage/images/about/BelHard.svg' %}" alt=""></a></div>
+        <div ><a href="http:\\www.byfly.by/intro/beltelecom"><img src="{% static './MainPage/images/about/BelTele.svg' %}" alt=""></a></div>
+        <div ><a href="http:\\www.unodc.org"><img src="{% static './MainPage/images/about/UNODC.svg' %}" alt=""></a></div>
+        <div><a href="http:\\www.belhard.com/ru"><img src="{% static './MainPage/images/about/BelHard.svg' %}" alt=""></a></div>
+        <div ><a href="http:\\www.byfly.by/intro/beltelecom"><img src="{% static './MainPage/images/about/BelTele.svg' %}" alt=""></a></div>
+    </div>
+  </div>
+  <div id="elm" class="project-1 project-1-background">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 col-md-6 col-sm-12  col-xs-12  project-1-title  ">
+          <a href="/pomog/"><h2 >Безопасность в сети</h2></a>
+          <p>На сайте pomogut.by мы собрали для вас самую важную информацию о проблеме наркомании.
+            Как вовремя распознать в ребенке начинающего наркомана?
+            Куда обращаться и кто может помочь? Какая ответственность
+            предусмотрена за распространение наркотиков? На эти и многие
+            другие вопросы вы найдете ответ на сайте.
+          </p>
+
+              <a class="main" href=""><div class="buttons-number"><p>{{ phones }}</p></div></a>
+              <a class="main" href=""><div class="buttons-chat "><img src="{% static './MainPage/images/project/chat-icon.svg' %}" alt=""></div></a>
+
+          </div>
+        <div class="col-lg-offset-1 col-md-6 col-sm-12 ">
+          <div class=" project-1-slider">
+            {% for se in security %}
+              <div class="main-section-wave">
+                <div class="image-wave">
+                  <div class="image-wave-background"><img src="{% static './MainPage/images/project/wave.svg' %}" alt="">
+                    <div class="title-link-1">
+                      <p>{{ se.title }}</p><a href="{{ se.url }}">Подробнее</a>
+                    </div>
+                  </div>
+                  <div class="under-image-wave-background"><img class="center-block" src="{{ se.get_img }}" alt=""></div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="arrows col-lg-6 col-lg-offset-6">
+            <img class="next-1" src="{% static './MainPage/images/project/arrows/arrow-prev.svg' %}" alt="">
+            <img class="prev-1" src="{% static './MainPage/images/project/arrows/arrow-next.svg' %}" alt="">
+          </div>
+          <a class="center-block non-main" href=""><div class="buttons-number tablet"><p>{{ phones }}</p></div></a>
+          <a class="non-main" href=""><div class="buttons-chat mobile"><img src="{% static './MainPage/images/project/chat-icon.svg' %}" alt=""></div></a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="project-1  project-2-background">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 col-md-6 col-sm-12  col-xs-12  project-1-title  ">
+          <a href="https://pomogut.by/"><h2 >Помощь наркозависимым</h2></a>
+          <p>На сайте pomogut.by мы собрали для вас самую важную информацию о проблеме наркомании.
+            Как вовремя распознать в ребенке начинающего наркомана?
+            Куда обращаться и кто может помочь? Какая ответственность
+            предусмотрена за распространение наркотиков? На эти и многие
+            другие вопросы вы найдете ответ на сайте.
+          </p>
+
+              <a class="main" href=""><div class="buttons-number"><p>{{ phones }}</p></div></a>
+              <a class="main" href=""><div class="buttons-chat"><img src="{% static './MainPage/images/project/chat-icon.svg' %}" alt=""></div></a>
+
+          </div>
+        <div class=" col-lg-offset-1 col-md-6 col-sm-12  ">
+          <div class=" project-2-slider">
+            {% for ad in addicts %}
+            <div class="main-section-wave">
+                <div class="image-wave">
+                  <div class="image-wave-background"><img src="{% static './MainPage/images/project/wave.svg' %}" alt="">
+                    <div class="title-link-1">
+                      <p>{{ ad.title }}</p><a href="{{ ad.url }}">Подробнее</a>
+                    </div>
+                  </div>
+                  <div class="under-image-wave-background"><img class="center-block" src="{{ ad.get_img }}" alt=""></div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="arrows col-lg-6 col-lg-offset-6">
+            <img class="next-2" src="{% static './MainPage/images/project/green/arrow-prev.svg' %}" alt="">
+            <img class="prev-2" src="{% static './MainPage/images/project/green/arrow-next.svg' %}" alt="">
+          </div>
+          <a class="non-main" href=""><div class="buttons-number tablet"><p>{{ phones }}</p></div></a>
+          <a class="non-main" href=""><div class="buttons-chat mobile"><img src="{% static './MainPage/images/project/chat-icon.svg' %}" alt=""></div></a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="feedback">
+    <div class="row">
+      <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-6 col-xs-offset-2">
+        <h3 class="center-block">Связаться с нами</h3>
+        <p class="center-block">Не стесняйтесь говорить с нами, если у вас есть вопрос.
+           Просто заполните форму, и мы свяжемся с вами в ближайшее время
+          </p>
+          <div class="center-block form-group">
+            <label for="feedback-email">E-mail</label>
+            <input class="form-control input-lg" type="text" name="feedback-email" value="" placeholder="Набранный пользователем e-mail">
+            <label for="feedback-txt-msg">Текст сообщения</label>
+            <textarea class="form-control" rows="9" id="feedback-txt-msg" placeholder="Набранный пользователем текст сообщения"></textarea>
+            <input class="center-block btn btn-success button-form" type="submit" name="Отправить сообщение" value="Отправить сообщение">
+          </div>
+
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 col-md-8 col-sm-12 col-xs-12 ">
+          <p class="copyrights"> © 2019 Pomogut.by </p>
+          <div class="icons-social-networks">
+            <a href=""><img src="{% static './MainPage/images/footer/icon-google-plus.svg' %}" alt=""></a>
+            <a href=""><img src="{% static './MainPage/images/footer/icon-youtube.svg' %}" alt=""></a>
+            <a href=""><img src="{% static './MainPage/images/footer/icon-instagram.svg' %}" alt=""></a>
+            <a href=""><img src="{% static './MainPage/images/footer/icon-facebook.svg' %}" alt=""></a>
+            <a href=""><img src="{% static './MainPage/images/footer/icon-twitter.svg' %}" alt=""></a>
+            <a href=""><img src="{% static './MainPage/images/footer/icon-vk.svg' %}" alt=""></a>
+            <a href=""><img src="{% static './MainPage/images/footer/icon-viber.svg' %}" alt=""></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="{% static './MainPage/slick/slick.min.js' %}"></script>
+  <script type="text/javascript" src="{% static './MainPage/script/script.js' %}"></script>
+  <script>
+    $('document').ready(function(){
+      $('input.center-block.btn.btn-success.button-form').on('click', function(){
+        var email = $('input.form-control.input-lg').val()
+        var text = $('textarea.form-control').val()
+        $('input.form-control.input-lg').val('')
+        $('textarea.form-control').val('')
+        $.ajax({
+          url:'/add_the_information/add_the_information_about_us/',
+          data:{'email':email, 'text':text},
+          success:function(data){
+            if (data == 'error'){
+              console.log('error--')
+            }else{
+              console.log('done--')
+            }
+          }
+        })
+      })
+    })
+  </script>
+</body>
+
+</html>

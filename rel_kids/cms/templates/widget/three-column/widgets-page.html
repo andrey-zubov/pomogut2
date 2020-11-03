@@ -1,0 +1,33 @@
+{% load staticfiles %}
+  <link rel="stylesheet" href="{% static './three-column/css/normalize.css' %}">
+  <link rel="stylesheet" href="{% static './three-column/css/three-column.min.css' %}">
+
+  <div class="container three-column">
+      <div class="row">
+        <div class="col-lg-12 three-column-title"><h3 class="text-center">{{ obj.title }}</h3></div>
+        {% if obj.get_img.0 %}
+        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 three-column-group"><div class="three-column-image-section center-block"><img class="center-block img-circle" src="{{ obj.get_img.0 }}" alt=""></div><p class="text-center">{{ obj.key1 }}</p></div>
+        {% endif %}
+        {% if obj.get_img.1 %}
+        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 three-column-group"><div class="three-column-image-section center-block"><img class="center-block img-circle" src="{{ obj.get_img.1 }}" alt=""></div><p class="text-center">{{ obj.key2 }}</p></div>
+        {% endif %}
+        {% if obj.get_img.2 %}
+        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 three-column-group"><div class="three-column-image-section center-block"><img class="center-block img-circle" src="{{ obj.get_img.2 }}" alt=""></div><p class="text-center">{{ obj.key3 }}</p></div>
+        {% endif %}
+        {% if obj.get_img.3 %}
+        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 three-column-group"><div class="three-column-image-section center-block"><img class="center-block img-circle" src="{{ obj.get_img.3 }}" alt=""></div><p class="text-center">{{ obj.key4 }}</p></div>
+        {% endif %}
+
+      </div>
+      <div class="row">
+        {% if obj.get_img.4 %}
+        <div class="col-lg-3 col-lg-offset-1 col-md-6  col-sm-6     three-column-group"><div class="three-column-image-section center-block"><img class="center-block img-circle" src="{{ obj.get_img.4 }}" alt=""></div><p class="text-center">{{ obj.key5 }}</p></div>
+        {% endif %}
+        {% if obj.get_img.5 %}
+        <div class="col-lg-3 col-md-6  col-sm-6 three-column-group "><div class="three-column-image-section center-block"><img class="center-block img-circle" src="{{ obj.get_img.5 }}" alt=""></div><p class="text-center">{{ obj.key6 }}</p></div>
+        {% endif %}
+        {% if obj.get_img.6 %}
+        <div class="col-lg-3 col-md-6  col-sm-6   three-column-group"><div class="three-column-image-section center-block"><img class="center-block img-circle" src="{{ obj.get_img.6 }}" alt=""></div><p class="text-center">{{ obj.key7 }}</p></div>
+        {% endif %}
+      </div>
+    </div>
