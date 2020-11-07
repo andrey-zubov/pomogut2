@@ -62,13 +62,34 @@ Page.register_templates({
     'path': 'widgets/refactor_art.html',
     'regions': (
         ('main', _('Статьи')),
-        ('sections', _('Нижнии секции')),
+        ('sections', _('Нижние секции')),
         ('right_sidebar', _('Правый сайдбар')),
         ('footer', _('footer')),
     ),
 })
 
 Page.register_extensions('feincms.extensions.ct_tracker')
+
+
+class NewsVideo(models.Model):
+    class Meta:
+        abstract = True
+        verbose_name = 'Видео'
+        verbose_name_plural = 'Видео'
+        
+    script = models.TextField(
+        verbose_name='встроить видео',
+        help_text='youtube > поделиться > "<>" > скопировать текст'
+    )
+
+    def render(self):
+        return render_to_string(
+            'widgets/video_script_widget.html',
+            context={'widget': self}
+        )
+
+
+NewsPage.create_content_type(NewsVideo, regions=('main_news',))
 
 
 class StandartArticle(models.Model):

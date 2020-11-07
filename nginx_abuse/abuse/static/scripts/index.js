@@ -12,6 +12,7 @@ import ArticleSelect from "./shared/article-select.js";
 import ArticleCalendar from "./shared/article-calendar.js";
 import Organizations from "./shared/organizations.js";
 import Partners from "./shared/partners.js";
+import Anchors from "./shared/anchors.js"
 
 $(document).ready(async () => {
   window.refs = {
@@ -46,6 +47,10 @@ $(document).ready(async () => {
     partners: {
       init: () => new Partners(),
       selectors: [".partners"],
+    },
+    anchors: {
+      init: () => new Anchors(),
+      selectors: ["*"],
     },
   };
 

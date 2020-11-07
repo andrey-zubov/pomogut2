@@ -1,6 +1,6 @@
 {% load static %}
-<div class="participants">
-  <h2 class="participants__title headline-1">{{widget.title}}<a name="{{ widget.title }}"></a></h2>
+<div class="participants" id="{{widget.title}}">
+  <h2 class="participants__title headline-1">{{widget.title}}</h2>
   <div class="participants__content">
     {% for partner in partners %}
       <div class="participant">
