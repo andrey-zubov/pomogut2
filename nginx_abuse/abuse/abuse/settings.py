@@ -11,7 +11,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'o%purl422v$reg*1m#sujh$)=n!f#ojw83v2uv+=9m@mn9i=za'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '*'
@@ -157,3 +157,20 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 FEINCMS_USE_PAGE_ADMIN=False
+
+LOGGING = {
+    'version':1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file_error': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': r'./logs/error.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file_error'],
+        },
+    },
+}

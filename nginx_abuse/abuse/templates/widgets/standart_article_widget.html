@@ -1,5 +1,5 @@
 {% block content %}
-<div class="article" id="{{widget.title}}">
+<div class="article" id="{{widget.prefix}}{{widget.id}}">
   <h1 class="article__title headline-1">{{widget.title}}</h1>
   {% if widget.picture %}
     <div class="article__image-wrapper aspect-ratio">

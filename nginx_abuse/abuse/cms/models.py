@@ -52,7 +52,6 @@ NewsPage.create_content_type(RichTextContent, regions=('main_news',))
 NewsPage.register_extensions('feincms.extensions.ct_tracker')
 
 
-
 Page.register_extensions(
     'feincms.extensions.datepublisher',
 )
@@ -97,6 +96,8 @@ class StandartArticle(models.Model):
         abstract = True
         verbose_name = 'Стандартная статья'
         verbose_name_plural = 'Стандартные статья'
+
+    prefix = 'standart'
 
     title = models.CharField(
         verbose_name='Заголовок',
@@ -156,6 +157,8 @@ class CalendarArticle(models.Model):
         verbose_name = 'Статья с календарем мероприятий'
         verbose_name_plural = 'Стати с календарем мероприятий'
 
+    prefix = 'calendar'
+
     title = models.CharField(
         verbose_name='Заголовок',
         max_length=256
@@ -202,6 +205,8 @@ class ParticipantWidget(models.Model):
         verbose_name = 'Участники проекта'
         verbose_name_plural = 'Участники проекта'
 
+    prefix = 'participant'
+
     title = models.CharField(
         verbose_name='заголовок',
         max_length=256
@@ -233,6 +238,8 @@ class EmploymentArticle(models.Model):
         abstract = True
         verbose_name = 'Трудоустройство'
         verbose_name_plural = 'Трудоустройство'
+
+    prefix = 'employment'
 
     title = models.CharField(
         verbose_name='заголовок',
@@ -285,6 +292,8 @@ class AccordeonArticle(models.Model):
         verbose_name = 'Правовая информация'
         verbose_name_plural = 'Правовая информация'
 
+    prefix = 'accordeon'
+
     title = models.CharField(
         max_length=256,
         null=True,
@@ -307,18 +316,16 @@ class AccordeonArticle(models.Model):
         blank=True
     )
 
-
     def render(self):
         faq = FAQ.objects.all()
         return render_to_string(
             'widgets/accordeon_widget.html',
             context={'widget': self,
-                     'faq':faq
+                     'faq': faq
                      })
 
 
 Page.create_content_type(AccordeonArticle, regions=('main',))
-
 
 
 class ArticlePicture(models.Model):
@@ -354,6 +361,7 @@ class OrgSection(models.Model):
         verbose_name_plural = 'Секция организаций'
 
     title = 'Организации'
+    prefix = 'orgs'
 
     def render(self):
         article_pages = Page.objects.filter(template_key='widgets/refactor_art.html')
