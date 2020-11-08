@@ -1,0 +1,69 @@
+client_max_body_size 10M;
+
+
+upstream web3 {  
+  ip_hash;
+  server web3:8000;
+}
+
+server {
+    location /static/ {    
+        autoindex on;    
+        alias /src3/static/; 
+    }
+    location /media/ {
+        autoindex on;
+        alias /src3/media/;
+    }
+
+    location / {
+        proxy_pass http://web3/;
+    }
+    listen 8000;
+    server_name localhost;
+}
+
+upstream web1 {  
+  ip_hash;
+  server web1:8200;
+}
+
+server {
+
+    location /static/ {    
+        autoindex on;    
+        alias /src/static/; 
+    }
+    location /media/ {
+        autoindex on;
+        alias /src/media/;
+    }
+
+    location / {
+        proxy_pass http://web1/;
+    }
+    listen 8200;
+    server_name localhost1;
+}
+
+upstream web2 {  
+  ip_hash;
+  server web2:8300;
+}
+
+server {
+    location /static/ {    
+        autoindex on;    
+        alias /src2/static/; 
+    }
+    location /media/ {
+        autoindex on;
+        alias /src2/media/;
+    }
+
+    location / {
+        proxy_pass http://web2/;
+    }
+    listen 8300;
+    server_name localhost2;
+}
