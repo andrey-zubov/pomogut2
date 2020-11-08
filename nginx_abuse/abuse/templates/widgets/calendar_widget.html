@@ -70,8 +70,10 @@
     {% endfor %}
   </div>
   <div class="article__buttons article__buttons--left">
-    <a href="{{widget.bank_link}}" class="btn" target="_blank"
-      ><span>Банк вакансий</span></a
-    >
+    {% for link in widget.link.all %}
+      <a href="{{link.link}}" class="btn" target="_blank"
+        ><span>{{link.title}}</span></a
+      >
+    {% endfor %}
   </div>
 </div>

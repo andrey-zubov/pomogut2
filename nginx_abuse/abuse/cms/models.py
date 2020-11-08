@@ -118,7 +118,10 @@ class StandartArticle(models.Model):
     text = models.TextField(
         verbose_name='Текст',
         null=True,
-        blank=True)
+        blank=True,
+        help_text='''список: &ltul&gt &ltli&gt&ltp&gtТекст пункта списка&lt/li&gt
+         &ltli&gt&ltp&gtТекст пункта списка&lt/li&gt &lt/ul&gt'''
+    )
     list = models.TextField(
         verbose_name='Список',
         null=True,
@@ -150,8 +153,8 @@ Page.create_content_type(StandartArticle, regions=('main',))
 class CalendarArticle(models.Model):
     class Meta:
         abstract = True
-        verbose_name = 'Статья с календарем'
-        verbose_name_plural = 'Стати с календарем'
+        verbose_name = 'Статья с календарем мероприятий'
+        verbose_name_plural = 'Стати с календарем мероприятий'
 
     title = models.CharField(
         verbose_name='Заголовок',
@@ -163,14 +166,18 @@ class CalendarArticle(models.Model):
         null=True,
         max_length=256
     )
-    text = models.TextField()
-    list = models.TextField(
-        default='<li></li>',
+    text = models.TextField(
+        help_text='''список: &ltul&gt &ltli&gt&ltp&gtТекст пункта списка&lt/li&gt
+         &ltli&gt&ltp&gtТекст пункта списка&lt/li&gt &lt/ul&gt'''
     )
-    bank_link = models.CharField(
-        verbose_name='Ссылка на банк вакансий',
-        max_length=256,
-        null=True,
+    list = models.TextField(
+        default='<li><p></li>',
+        blank=True,
+        null=True
+    )
+    link = models.ManyToManyField(
+        "cms.Link",
+        verbose_name='Добавить ссылку',
         blank=True
     )
 
@@ -184,6 +191,7 @@ class CalendarArticle(models.Model):
                      'all_cityes': all_cityes,
                      'all_events': all_events
                      })
+
 
 Page.create_content_type(CalendarArticle, regions=('main',))
 
@@ -240,7 +248,9 @@ class EmploymentArticle(models.Model):
     text = models.TextField(
         verbose_name='Текст',
         null=True,
-        blank=True
+        blank=True,
+        help_text='''список: &ltul&gt &ltli&gt&ltp&gtТекст пункта списка&lt/li&gt
+         &ltli&gt&ltp&gtТекст пункта списка&lt/li&gt &lt/ul&gt'''
     )
     list = models.TextField(
         verbose_name='Список',
@@ -413,8 +423,13 @@ class Vacancy(models.Model):
 
     title = models.CharField(
         max_length=256,
+        verbose_name='Название'
     )
-    description = models.TextField()
+    description = models.TextField(
+        verbose_name="описание вакансии",
+        blank=True,
+        null=True
+    )
     time = models.CharField(
         choices=[
             ('1', 'Полная занятость'),
@@ -422,7 +437,10 @@ class Vacancy(models.Model):
             ('3', 'Подработка'),
             ('4', 'Гибкий график'),
         ],
-        max_length=64
+        max_length=64,
+        verbose_name='тип занятости',
+        blank=True,
+        null=True
     )
     ownership = models.CharField(
         choices=[
@@ -431,23 +449,43 @@ class Vacancy(models.Model):
             ('3', 'Общественная организация'),
             ('4', 'Религиозная организация'),
         ],
-        max_length=64
+        max_length=64,
+        verbose_name='тип оранизации',
+        blank=True,
+        null=True
     )
     employer = models.CharField(
         max_length=256,
+        verbose_name='Работодаель',
+        blank=True,
+        null=True
     )
     tel = models.CharField(
-        max_length=64
+        max_length=128,
+        verbose_name='Телефон',
+        blank=True,
+        null=True
     )
     city = models.ForeignKey(
         'City',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        verbose_name='Город'
     )
-    adress = models.TextField()
+    adress = models.TextField(
+        verbose_name='Адрес',
+        blank=True,
+        null=True
+    )
     position = models.CharField(
-        max_length=256
+        max_length=256,
+        blank=True,
+        null=True,
+        verbose_name='Позиция'
     )
-    email = models.EmailField()
+    email = models.EmailField(
+        blank=True,
+        null=True
+    )
 
     def __str__(self):
         return str(self.title)
@@ -527,7 +565,9 @@ class FAQlist(models.Model):
         verbose_name='Заголовок статьи'
     )
     text = models.TextField(
-        verbose_name='Содержимое статьи'
+        verbose_name='Содержимое статьи',
+        help_text='''список: &ltul&gt &ltli&gt&ltp&gtТекст пункта списка&lt/li&gt
+         &ltli&gt&ltp&gtТекст пункта списка&lt/li&gt &lt/ul&gt'''
     )
 
     def __str__(self):
@@ -954,7 +994,7 @@ class RigthSidebarInfo(models.Model):
     text = models.TextField(
         verbose_name='Текстовая информация',
         null=True,
-        blank=True
+        blank=True,
     )
 
     def __str__(self):
