@@ -3,6 +3,7 @@ from django.http import HttpResponse, FileResponse
 from django.db.models import Q
 from .forms import OrgForm, VacancyForm, EventForm
 from .utils import check_city
+import json
 
 from .models import (
     Page,
@@ -117,7 +118,7 @@ def add_new_org(request):
     )
 
 
-def create_org(request):  # ajax
+def create_org(request):  # ajax organizations
 
     org_type = ServicesType.objects.get(
         id=request.GET['org_type']
@@ -142,7 +143,7 @@ def create_org(request):  # ajax
         print(form.errors)
 
 
-def create_vac(request):  # ajax
+def create_vac(request):  # ajax vacancies
     vac_form = VacancyForm(request.GET)
     if vac_form.is_valid():
         new_vac = vac_form.save(commit=False)
@@ -153,7 +154,7 @@ def create_vac(request):  # ajax
         print(vac_form.errors)
 
 
-def create_event(request):  # ajax
+def create_event(request):  # ajax events
     event_form = EventForm(request.GET)
     if event_form.is_valid():
         new_event = event_form.save(commit=False)
@@ -166,7 +167,7 @@ def create_event(request):  # ajax
         print(event_form.errors)
 
 
-def create_feedback(request):  # ajax
+def create_feedback(request):  # ajax feedback
     print(request.GET)
     if request.GET.__contains__('message_text'):
         Feedback.objects.create(
@@ -179,8 +180,8 @@ def create_feedback(request):  # ajax
         )
     return HttpResponse(1)
 
-import json
-def filter_areas(request):
+
+def filter_areas(request):  # ajax region-select filtrations
     region = Region.objects.get(title=request.GET['name'])
     areas = Area.objects.filter(region_id=region.id)
     area_names = [i.title for i in areas]
