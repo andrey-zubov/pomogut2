@@ -209,7 +209,7 @@ export default class Organizations {
       }
     });
 
-    fetch("http://taac.pythonanywhere.com/api/orgs/")
+    fetch("http://http://93.125.114.97:8200/api/orgs/")
       .then((response) => {
         return response.json();
       })
