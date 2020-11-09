@@ -48,7 +48,7 @@
           <div class="news__container">
             <h1 class="news__title">НОВОСТИ</h1>
             <div class="news__content">
-              {% for n in news %}
+              {% for n in page_obj %}
                 <div class="news-item">
                   <h3 class="news-item__title">
                     {{ n.title }}
@@ -68,6 +68,26 @@
                 </div>
               {% endfor %}
             </div>
+
+          <div class="pagination">
+            <span class="step-links">
+              {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; В начало</a>
+                <a href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
+              {% endif %}
+
+              <span class="current">
+                Cтраница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+              </span>
+
+              {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">Следующая</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">Последняя &raquo;</a>
+              {% endif %}
+              </span>
+          </div>
+
+
           </div>
         </div>
       </div>

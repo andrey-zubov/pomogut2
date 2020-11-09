@@ -78,11 +78,15 @@ def org_info(request, slug):
         }
     )
 
-
+from django.core.paginator import Paginator
 def news_view(request):
-    news = NewsPage.objects.filter(template_key='widgets/newspage.html')
+    news = NewsPage.objects.filter(template_key='widgets/newspage.html').order_by('-publication_date')
     down_cats = Page.objects.filter(test_category='down')
     up_cats = Page.objects.filter(test_category='up')
+
+    paginator = Paginator(news, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     return render(
         request,
@@ -91,6 +95,7 @@ def news_view(request):
             'news': news,
             'down_cats': down_cats,
             'up_cats': up_cats,
+            'page_obj': page_obj
         }
     )
 
