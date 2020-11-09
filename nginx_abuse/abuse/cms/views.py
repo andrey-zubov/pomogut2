@@ -19,7 +19,9 @@ from .models import (
     OrgTemplate,
     Feedback,
     BackCall,
-    RigthSidebarInfo
+    RigthSidebarInfo,
+    Area,
+    Region
 )
 
 
@@ -167,7 +169,6 @@ def create_event(request):  # ajax
 def create_feedback(request):  # ajax
     print(request.GET)
     if request.GET.__contains__('message_text'):
-        print('msg')
         Feedback.objects.create(
             text=request.GET['message_text']
         )
@@ -177,6 +178,14 @@ def create_feedback(request):  # ajax
             tel=request.GET['cal_tel']
         )
     return HttpResponse(1)
+
+import json
+def filter_areas(request):
+    region = Region.objects.get(title=request.GET['name'])
+    areas = Area.objects.filter(region_id=region.id)
+    area_names = [i.title for i in areas]
+    response = {'area_names': area_names}
+    return HttpResponse(json.dumps(response))
 
 
 def single_news(request, slug):

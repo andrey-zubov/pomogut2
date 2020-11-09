@@ -98,3 +98,28 @@
   </div>
   <div class="organizations__map"></div>
 </section>
+
+<script>
+  $('document').ready(function () {
+    console.log('test');
+
+    $('.organizations__select__item').on('click', function () {
+      let x = $('.organizations__select__region').find(":selected").val();;
+      console.log(x)
+      $.ajax({
+        url: "{% url 'filter_areas' %}",
+        data: {'name': x},
+        success: function(response){
+          result = JSON.parse(response);
+          console.log(result);
+          $('.organizations__select__district').empty()
+          for(let i=0; i < result.length; i++){
+            console.log(i);
+          }
+        }
+
+      });
+    });
+
+  })
+</script>
