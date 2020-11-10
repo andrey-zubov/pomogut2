@@ -69,25 +69,30 @@
               {% endfor %}
             </div>
 
-          <div class="pagination">
-            <span class="step-links">
+            <div class="pagination">
+              <span class="pages">
+                Cтраница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+              </span>
+
+              <a class="previous" href="/">«</a>
+
               {% if page_obj.has_previous %}
                 <a href="?page=1">&laquo; В начало</a>
                 <a href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
               {% endif %}
+              
+              <span class="current">3</span>
 
-              <span class="current">
-                Cтраница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
-              </span>
+              <span class="extend">...</span>
 
               {% if page_obj.has_next %}
                 <a href="?page={{ page_obj.next_page_number }}">Следующая</a>
                 <a href="?page={{ page_obj.paginator.num_pages }}">Последняя &raquo;</a>
               {% endif %}
-              </span>
+              
+              <span class="extend">...</span>
+             <a class="next" href="/">»</a>
           </div>
-
-
           </div>
         </div>
       </div>
