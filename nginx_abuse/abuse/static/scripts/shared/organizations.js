@@ -41,7 +41,9 @@ export default class Organizations {
       );
     }
 
-    new MarkerClusterer(this.map, this.firstArray,
+    this.clusters.setMap(null);
+
+    this.clusters = new MarkerClusterer(this.map, this.firstArray,
       {imagePath: "https://unpkg.com/@googlemaps/markerclustererplus@1.0.3/images/m"})
   }
 
@@ -55,7 +57,7 @@ export default class Organizations {
       });
       return m;
     });
-    
+
     this.setMarkersOnMap(activeMarkers);
   }
 
@@ -72,7 +74,7 @@ export default class Organizations {
       ),
       mapTypeId: google.maps.MapTypeId.ROADMAP,
     });
-   
+
     this.setMarkersOnMap(this.locations);
   }
 
