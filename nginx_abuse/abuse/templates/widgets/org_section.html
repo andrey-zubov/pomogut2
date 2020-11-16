@@ -46,15 +46,6 @@
                 {% endfor %}
               </select>
             </div>
-<!--            <div class="organizations__select__item">-->
-<!--              <p>Выберите город</p>-->
-<!--              <select class="organizations__select__cities">-->
-<!--                <option value="All">Выберите город</option>-->
-<!--                {% for city in all_cites %}-->
-<!--                  <option value="{{city.title}}">{{city.title}}</option>-->
-<!--                {% endfor %}-->
-<!--              </select>-->
-<!--            </div>-->
           </div>
           <div class="organizations__content">
             {% for org in all_orgs %}
@@ -98,30 +89,3 @@
   </div>
   <div class="organizations__map"></div>
 </section>
-
-<script>
-  $('document').ready(function () {
-    $('.organizations__select__region').on('change', function () {
-      let x = $('.organizations__select__region').find(":selected").val();
-      $.ajax({
-        url: "{% url 'filter_areas' %}",
-        data: {'name': x},
-        success: function(response){
-          result = JSON.parse(response).area_names;
-          $('.organizations__select__district').empty()
-          $('.organizations__select__district').append($('<option>', {
-            value: 'All',
-            text: 'Все районы'
-          }));
-          for(let i=0; i < result.length; i++){
-            $('.organizations__select__district').append($('<option>', {
-              value: result[i],
-              text: result[i]
-            }));
-          }
-        }
-      });
-    });
-
-  })
-</script>

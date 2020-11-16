@@ -220,6 +220,7 @@ export default class Organizations {
       })
       .then((data) => {
         this.locations = data.orgs;
+        console.log(this.locations);
         this.initMap();
       })
       .catch((error) => {
