@@ -102,8 +102,7 @@
 <script>
   $('document').ready(function () {
     $('.organizations__select__region').on('change', function () {
-      let x = $('.organizations__select__region').find(":selected").val();;
-      console.log(x)
+      let x = $('.organizations__select__region').find(":selected").val();
       $.ajax({
         url: "{% url 'filter_areas' %}",
         data: {'name': x},
@@ -121,7 +120,6 @@
             }));
           }
         }
-
       });
     });
 
