@@ -3,10 +3,6 @@
   border-bottom: 1px solid $light-gray;
   margin-top: 30px;
 
-  &:nth-of-type(1) {
-    margin-top: 0;
-  }
-
   &__title {
     padding: 0 25px;
     text-transform: uppercase;
@@ -128,10 +124,6 @@
 
 @media (max-width: $lg) {
   .article {
-    &:nth-of-type(1) {
-      margin-top: 20px;
-    }
-
     &__image-caption {
       p {
         font-size: 20px;
@@ -140,11 +132,9 @@
   }
 }
 
-@media (max-width: $lg) {
+@media (max-width: $md) {
   .article {
     &__image-caption {
-      border-radius: 0 44px 0 0;
-
       p {
         font-size: 18px;
       }
