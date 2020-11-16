@@ -7,7 +7,7 @@ export default class Organizations {
     this.locations;
     this.markers;
     this.map;
-    this.clusters;
+    this.clusters = null;
     this.firstArray = [];
     this.YOUR_API = "AIzaSyAknqsh2KRjjBbPy3V7Cahj1j0M7eDITF0";
     this.init();
@@ -42,7 +42,9 @@ export default class Organizations {
       );
     }
 
-    this.clusters.setMap(null);
+    if(this.clusters != null){
+      this.clusters.setMap(null)
+    }
 
     this.clusters = new MarkerClusterer(this.map, this.firstArray,
       {imagePath: "https://unpkg.com/@googlemaps/markerclustererplus@1.0.3/images/m"})
