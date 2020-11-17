@@ -4,6 +4,8 @@ class OrgSerializer(serializers.Serializer):
     id = serializers.CharField()
     title = serializers.CharField(max_length=120)
     city = serializers.CharField(max_length=120)
+    area = serializers.CharField(source='get_area')
+    region = serializers.CharField(source='get_region')
     adress = serializers.CharField(max_length=120)
     lat = serializers.CharField(max_length=120)
     lng = serializers.CharField(max_length=120)
