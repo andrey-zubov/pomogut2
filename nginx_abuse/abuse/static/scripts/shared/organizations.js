@@ -5,10 +5,13 @@ export default class Organizations {
     this.initMapInterval = false;
     this.interval = null;
     this.locations;
+    this.regions;
     this.markers;
     this.map;
     this.clusters = null;
     this.firstArray = [];
+    this.region = false;
+    this.pair = [];
     this.YOUR_API = "AIzaSyAknqsh2KRjjBbPy3V7Cahj1j0M7eDITF0";
     this.init();
   }
@@ -17,6 +20,12 @@ export default class Organizations {
     let infowindow = new google.maps.InfoWindow();
 
     let marker;
+
+    let clustersArr = [];
+
+    for (var i = 0; i < this.firstArray.length; i++) {
+      this.firstArray[i].setMap(null); //Remove the marker from the map
+    }
 
     for (let i = 0; i < markersArray.length; i++) {
       marker = new google.maps.Marker({
@@ -27,14 +36,20 @@ export default class Organizations {
         map: this.map,
       });
 
-      this.firstArray[i] = marker;
+      let ind = this.pair.filter(({id})=>{
+        return id == markersArray[i].id
+      })
+
+      clustersArr.push(marker);
+
+      this.firstArray[ind[0].position] = marker;
 
       google.maps.event.addListener(
         marker,
         "click",
         ((marker, i) => {
           return () => {
-            const content = `<div class="map-popup"><div class="map-popup__content"><p class="map-popup__title">${markersArray[i].title}</p><p class="map-popup__description">${markersArray[i].adress}</p></div></div>`
+            const content = `<div class="map-popup"><div class="map-popup__content"><p class="map-popup__title">${markersArray[i].title}</p><p class="map-popup__description">${markersArray[i].adress}</p><p><strong>${markersArray[i].id}</strong></p></div></div>`
             infowindow.setContent(content);
             infowindow.open(this.map, marker);
           };
@@ -42,24 +57,21 @@ export default class Organizations {
       );
     }
 
-    if(this.clusters != null){
-      this.clusters.setMap(null)
-    }
-
-    this.clusters = new MarkerClusterer(this.map, this.firstArray,
-      {imagePath: "https://unpkg.com/@googlemaps/markerclustererplus@1.0.3/images/m"})
+    this.clusters = new MarkerClusterer(this.map, clustersArr,
+      {imagePath: "https://unpkg.com/@googlemaps/markerclustererplus@1.0.3/images/m"});
   }
 
   filterMarkers(showMarkers) {
-    for (var i = 0; i < this.firstArray.length; i++) {
-      this.firstArray[i].setMap(null); //Remove the marker from the map
-    }
     const activeMarkers = showMarkers.map((dataMapId) => {
       const m = this.markers.find(({ id }) => {
         return id === dataMapId;
       });
       return m;
     });
+
+    if(this.clusters != null){
+      this.clusters.setMap(null);
+    }
 
     this.setMarkersOnMap(activeMarkers);
   }
@@ -77,6 +89,10 @@ export default class Organizations {
       ),
       mapTypeId: google.maps.MapTypeId.ROADMAP,
     });
+
+    this.locations.forEach((l, index) =>{
+      this.pair[index] = {id: l.id, position: index}
+    })
 
     this.setMarkersOnMap(this.locations);
   }
@@ -112,7 +128,6 @@ export default class Organizations {
     const attr = cityAttr + regionAttr + disctrictAttr;
     const cities = document.querySelectorAll(`.organization-item${attr}`);
 
-    $(".organizations__content").slideUp();
     $(".organization-item").hide();
 
     let showMarkers = [];
@@ -138,11 +153,39 @@ export default class Organizations {
         }
       });
     }
+
     if (this.initMapInterval) {
       this.filterMarkers(showMarkers);
     }
 
-    $(".organizations__content").slideDown();
+    if(this.region){
+      let districtContent = isRegion ? '<option value="All">Все районы</option>' : '<option value="All">Выберите район</option>';
+
+      if(isRegion){
+        let region = this.regions.filter(({title})=>{
+          return title == isRegion
+        })
+
+        let areas = region[0].areas.split(', ');
+
+        areas.forEach(a=>{
+          let area = a.replace("'","").replace("'","");
+          districtContent += `<option value="${area}">${area}</option>`;
+        })
+      }else{
+        this.regions.forEach(r=>{
+          r.areas.split(', ').forEach(a=>{
+            let area = a.replace("'","").replace("'","");
+            districtContent += `<option value="${area}">${area}</option>`;
+          })
+        })
+      }
+
+      document.querySelector('.organizations__select__district').innerHTML = districtContent;
+      $(".organizations__select__district").trigger('change');
+
+      this.region = false;
+    }
   }
 
   init() {
@@ -151,10 +194,10 @@ export default class Organizations {
       placeholder: "Выберите деятельность",
     });
 
-    $(".organizations__select__cities").select2({
-      closeOnSelect: true,
-      placeholder: "Выберите город",
-    });
+    // $(".organizations__select__cities").select2({
+    //   closeOnSelect: true,
+    //   placeholder: "Выберите город",
+    // });
 
     $(".organizations__select__region").select2({
       closeOnSelect: true,
@@ -171,21 +214,27 @@ export default class Organizations {
       if (data) {
         if (data === "All") {
           this.organizations.removeAttribute("data-active-spec");
+
         } else {
           this.organizations.dataset.activeSpec = data;
         }
+
         this.showOrganization();
       }
     });
 
     $(".organizations__select__region").on("select2:close", (e) => {
       const data = e.params.originalSelect2Event?.data.id;
+
       if (data) {
         if (data === "All") {
           this.organizations.removeAttribute("data-active-region");
         } else {
           this.organizations.dataset.activeRegion = data;
         }
+        this.organizations.removeAttribute("data-active-district");
+
+        this.region = true;
         this.showOrganization();
       }
     });
@@ -202,26 +251,40 @@ export default class Organizations {
       }
     });
 
-    $(".organizations__select__cities").on("select2:close", (e) => {
-      const data = e.params.originalSelect2Event?.data.id;
-      if (data) {
-        if (data === "All") {
-          this.organizations.removeAttribute("data-active-city");
-        } else {
-          this.organizations.dataset.activeCity = data;
-        }
-        this.showOrganization();
-      }
-    });
+    // $(".organizations__select__cities").on("select2:close", (e) => {
+    //   const data = e.params.originalSelect2Event?.data.id;
+    //   if (data) {
+    //     if (data === "All") {
+    //       this.organizations.removeAttribute("data-active-city");
+    //     } else {
+    //       this.organizations.dataset.activeCity = data;
+    //     }
+    //     this.showOrganization();
+    //   }
+    // });
 
-    fetch("http://93.125.114.97:8200/api/orgs/")
+    fetch("/api/orgs/")
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         this.locations = data.orgs;
-        console.log(this.locations);
         this.initMap();
+      })
+      .catch((error) => {
+        console.log("error");
+      });
+
+      fetch("/api/regions/")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        this.regions = data.regions;
+        this.regions.forEach(r =>{
+         r.areas = r.areas.replace('[', '').replace(']', '');
+        })
+
       })
       .catch((error) => {
         console.log("error");
