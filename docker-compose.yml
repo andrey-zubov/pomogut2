@@ -23,20 +23,20 @@ services:
     depends_on:
       - web3
 
-#  bot:
-#    build:
-#      context: .
-#      dockerfile: ButonBotDjango/compose/django/Dockerfile
-#    container_name: telegram-bot_orig
-#    restart: always
-#    #    networks:
-#    #      - botnet
-#    volumes:
-#      - ./ButonBotDjango/ButonBotDjango:/src3
-#    expose:
-#      - 8300
-#    command: sh -c
-#      "echo hello world && python3 help_bot/telega.py"
+  bot:
+    build:
+      context: .
+      dockerfile: ButonBotDjango/compose/django/Dockerfile
+    container_name: telegram-bot_orig
+    restart: always
+    #    networks:
+    #      - botnet
+    volumes:
+      - ./ButonBotDjango/ButonBotDjango:/src3
+    expose:
+      - 8300
+    command: sh -c
+      "echo hello world && python3 help_bot/telega.py"
 
   web3:
     build:
