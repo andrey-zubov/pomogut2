@@ -14,6 +14,7 @@ class OrgSerializer(serializers.Serializer):
 class RegionSerializer(serializers.Serializer):
     id = serializers.CharField()
     title = serializers.CharField(max_length=256)
+    areas = serializers.CharField(source='get_areas')
 
 
 class AreaSerializer(serializers.Serializer):
