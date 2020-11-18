@@ -15,7 +15,7 @@ urlpatterns = [
     url(r'add_the_information/', include('MainPagePomogut.MainPagePomogut_urls')),
     url(r'^pomog/', include('cms.cms_urls')),
     url(r'admin/', admin_choice),
-    url(r'^admin-kids/', include(admin.site.urls)),
+    url(r'^admin-kids', include(admin.site.urls)),
     url(r'', include('feincms.urls'))
 ]
 
