@@ -9,7 +9,7 @@ services:
     #  - botnet
     ports:
       - "80:80"
-      # - "443:443"
+      - "443:443"
 #      - 8000:8000
 #      - 8200:8200
 #      - 8300:8300
@@ -22,6 +22,8 @@ services:
       # - /var/www/httpd-cert/www-root:/etc/ssl        
     depends_on:
       - web3
+      - web2
+      - web1
 
   bot:
     build:
