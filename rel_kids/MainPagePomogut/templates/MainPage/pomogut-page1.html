@@ -160,21 +160,25 @@
         </div>
         <div class="col-lg-offset-1 col-md-6 col-sm-12 ">
           <div class=" project-1-slider">
-            <div class="main-section-wave">
-              <div class="image-wave">
-                <div class="image-wave-background"><img src="{% static './MainPage/images/project/wave.svg' %}" alt="">
-                  <div class="title-link-1">
-                    <p>Кому поможет эта страница?</p><a href="//released.pomogut.by">Подробнее</a>
+
+             {% for reab in social %}
+              <div class="main-section-wave">
+                <div class="image-wave">
+                  <div class="image-wave-background"><img src="{% static './MainPage/images/project/wave.svg' %}" alt="">
+                    <div class="title-link-1">
+                      <p>{{ reab.title }}</p><a href="{{ reab.url }}">Подробнее</a>
+                    </div>
                   </div>
+                  <div class="under-image-wave-background"><img class="center-block" src="{{ reab.get_img }}" alt=""></div>
                 </div>
-                <div class="under-image-wave-background"><img class="center-block" src="{% static './MainPage/images/released/relese.jpeg' %}" alt=""></div>
               </div>
-            </div>
+            {% endfor %}
+
           </div>
-{#          <div class="arrows col-lg-6 col-lg-offset-6">#}
-{#            <img class="next-1 " src="{% static './MainPage/images/project/arrows/arrow-prev.svg' %}" alt="">#}
-{#            <img class="prev-1 " src="{% static './MainPage/images/project/arrows/arrow-next.svg' %}" alt="">#}
-{#          </div>#}
+          <div class="arrows col-lg-6 col-lg-offset-6">
+            <img class="next-1 " src="{% static './MainPage/images/project/arrows/arrow-prev.svg' %}" alt="">
+            <img class="prev-1 " src="{% static './MainPage/images/project/arrows/arrow-next.svg' %}" alt="">
+          </div>
           <a  href="tel:+375173110000" class="center-block non-main"><div class="buttons-number tablet"><p>+375173110000</p></div></a>
           <a class="non-main" href="https://pomogut.bitrix24.by/online/kids"><div class="buttons-chat mobile"><img src="{% static './MainPage/images/project/chat-icon.svg' %}" alt=""></div></a>
         </div>

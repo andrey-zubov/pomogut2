@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Network_security_links, Help_for_addicts_links, To_contact_us, ContactInformation, Partners
+from .models import Network_security_links, Help_for_addicts_links, To_contact_us, ContactInformation, Partners, SocialReabilitation
 
 
 class Help_for_addicts_links_admin(admin.ModelAdmin):
@@ -28,4 +28,5 @@ admin.site.register(Network_security_links, Network_security_links_admin)
 admin.site.register(To_contact_us)
 admin.site.register(ContactInformation, ContactInformation_admin)
 admin.site.register(Partners, Partners_admin)
+admin.site.register(SocialReabilitation)
 # Register your models here.

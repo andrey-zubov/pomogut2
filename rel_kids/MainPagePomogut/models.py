@@ -91,4 +91,22 @@ class Partners(models.Model):
     @property
     def get_img(self):
         return format_html(f"<img src='{self.url_img}' width='70px'>")
-# Create your models here.
+
+
+class SocialReabilitation(models.Model):
+    class Meta:
+        verbose_name = 'Сcылки для "Социальная реабилитация"'
+        verbose_name_plural = 'Сcылки для "Социальная реабилитация"'
+
+    url = models.URLField(verbose_name='Ссылка')
+    title = models.CharField(max_length=25, verbose_name='название ссылки')
+    mediafile = MediaFileForeignKey(MediaFile, related_name='+',
+                                    null=True, on_delete=models.SET_NULL,
+                                    verbose_name='Картинка')
+
+    def __str__(self):
+        return self.title
+
+    @property
+    def get_img(self):
+        return join(settings.MEDIA_URL, str(self.mediafile.file))

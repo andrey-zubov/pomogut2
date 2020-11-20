@@ -8,7 +8,7 @@ urlpatterns = [
     path('admin-abuse', admin.site.urls),
     path('', include('cms.urls')),
     path('api/', include('api.urls')),
-    path('admin/', cms.views.admin_choice),
+    path(r'admin/', cms.views.admin_choice),
 ]
 
 urlpatterns += [

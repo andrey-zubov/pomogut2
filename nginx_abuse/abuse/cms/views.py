@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, FileResponse
 from django.db.models import Q
+from django.core.paginator import Paginator
 from .forms import OrgForm, VacancyForm, EventForm
 from .utils import check_city
 import json
@@ -78,7 +79,7 @@ def org_info(request, slug):
         }
     )
 
-from django.core.paginator import Paginator
+
 def news_view(request):
     news = NewsPage.objects.filter(template_key='widgets/newspage.html').order_by('-publication_date')
     down_cats = Page.objects.filter(test_category='down')
@@ -184,14 +185,6 @@ def create_feedback(request):  # ajax feedback
             tel=request.GET['cal_tel']
         )
     return HttpResponse(1)
-
-
-# def filter_areas(request):  # ajax region-select filtrations
-#     region = Region.objects.get(title=request.GET['name'])
-#     areas = Area.objects.filter(region_id=region.id)
-#     area_names = [i.title for i in areas]
-#     response = {'area_names': area_names}
-#     return HttpResponse(json.dumps(response))
 
 
 def single_news(request, slug):
