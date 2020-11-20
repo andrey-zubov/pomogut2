@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 import cms
 
 urlpatterns = [
-    path('admin-abuse/', admin.site.urls),
+    path('admin-abuse', admin.site.urls),
     path('', include('cms.urls')),
     path('api/', include('api.urls')),
     path('admin/', cms.views.admin_choice),

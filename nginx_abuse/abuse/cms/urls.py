@@ -11,7 +11,7 @@ from .views import (
     create_org,
     create_feedback,
     single_news,
-    filter_areas
+    # filter_areas
 )
 
 urlpatterns = [
@@ -25,7 +25,7 @@ urlpatterns = [
     path('create_event/', create_event, name='create_event'),
     path('get_answer/', get_answer, name='get_answer'),
     path('create_feedback', create_feedback, name='create_feedback'),
-    path('filter_areas', filter_areas, name='filter_areas'),
+    # path('filter_areas', filter_areas, name='filter_areas'),
 
     path('<slug>', single_news, name='single_news')
 

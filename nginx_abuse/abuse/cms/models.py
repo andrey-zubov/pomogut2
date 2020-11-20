@@ -757,6 +757,12 @@ class Organizations(models.Model):
     def get_img(self):
         return join(settings.MEDIA_URL, str(self.picture.file))
 
+    def get_area(self):
+        return self.city.area.id
+
+    def get_region(self):
+        return self.city.area.region.id
+
     def save(self, *args, **kwargs):
         if str(self.city).lower() in str(self.adress).lower():
             location = self.adress
@@ -787,6 +793,10 @@ class Region(models.Model):
     title = models.CharField(
         max_length=256
     )
+
+    def get_areas(self):
+        return list(self.area_set.all().values_list('title', flat=True))
+
     def __str__(self):
         return str(self.title)
 

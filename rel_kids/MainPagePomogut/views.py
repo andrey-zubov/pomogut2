@@ -25,3 +25,10 @@ def add_the_information_about_us(request):
         to.save()
         return HttpResponse('done')
 # Create your views here.
+
+
+def admin_choice(request):
+    return render(
+        request,
+        template_name='admin-choicer/index.html'
+    )

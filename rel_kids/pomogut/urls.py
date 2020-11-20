@@ -4,6 +4,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from feincms.module.page.sitemap import PageSitemap
 from django.conf.urls import handler404
+from MainPagePomogut.views import admin_choice
 handler404 = 'cms.views.handler404'
 
 admin.autodiscover()
@@ -13,7 +14,8 @@ urlpatterns = [
     url(r'^$', include('MainPagePomogut.MainPagePomogut_urls')),
     url(r'add_the_information/', include('MainPagePomogut.MainPagePomogut_urls')),
     url(r'^pomog/', include('cms.cms_urls')),
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'admin/', admin_choice),
+    url(r'^admin-kids', include(admin.site.urls)),
     url(r'', include('feincms.urls'))
 ]
 

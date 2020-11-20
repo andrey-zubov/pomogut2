@@ -8,11 +8,11 @@ services:
     #networks:
     #  - botnet
     ports:
-      # - "80:80"
-      # - "443:443"
-      - 8000:8000
-      - 8200:8200
-      - 8300:8300
+      - "80:80"
+      - "443:443"
+#      - 8000:8000
+#      - 8200:8200
+#      - 8300:8300
     volumes:
       - ./nginx_abuse/abuse:/src  
       - ./rel_kids/:/src2
@@ -22,6 +22,8 @@ services:
       # - /var/www/httpd-cert/www-root:/etc/ssl        
     depends_on:
       - web3
+      - web2
+      - web1
 
   bot:
     build:
@@ -53,8 +55,8 @@ services:
     #      command: sh -c
     #        "python3 manage.py makemigrations && python3 manage.py migrate && gunicorn config.wsgi -b 0.0.0.0:8000"
     # new
-    # ports:
-    #   - 8000:8000
+    ports:
+      - 8000:80
     # new
     command: bash -c
       "python3 manage.py migrate
@@ -68,8 +70,8 @@ services:
     container_name: django_pomog_test2
     volumes:
       - ./nginx_abuse/abuse:/src
-    # ports:
-    #   - "8000:8000"
+    ports:
+      - 8200:80
     tty: true    
     command: python3 manage.py runserver 0.0.0.0:8200
 
@@ -81,10 +83,10 @@ services:
     container_name: django_pomogutkids_test2
     volumes:
       - ./rel_kids:/src2
-    # ports:
-    #   - "8200:8200"
+    ports:
+      - 8400:80
     tty: true    
-    command: python3 manage.py runserver 0.0.0.0:8300
+    command: python3 manage.py runserver 0.0.0.0:8400
     
 
 networks:

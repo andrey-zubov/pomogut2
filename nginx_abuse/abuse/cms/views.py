@@ -186,12 +186,12 @@ def create_feedback(request):  # ajax feedback
     return HttpResponse(1)
 
 
-def filter_areas(request):  # ajax region-select filtrations
-    region = Region.objects.get(title=request.GET['name'])
-    areas = Area.objects.filter(region_id=region.id)
-    area_names = [i.title for i in areas]
-    response = {'area_names': area_names}
-    return HttpResponse(json.dumps(response))
+# def filter_areas(request):  # ajax region-select filtrations
+#     region = Region.objects.get(title=request.GET['name'])
+#     areas = Area.objects.filter(region_id=region.id)
+#     area_names = [i.title for i in areas]
+#     response = {'area_names': area_names}
+#     return HttpResponse(json.dumps(response))
 
 
 def single_news(request, slug):
