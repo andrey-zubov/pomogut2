@@ -34,7 +34,7 @@ export default class StickySideMenu {
     bottomSpacing += footerHeight
 
     if (isDesktop) {
-      $(".side-menu__content").sticky({ topSpacing: sideMenuTopSPacing, bottomSpacing: bottomSpacing + 30 });
+      $(".side-menu__content").sticky({ topSpacing: sideMenuTopSPacing + 35, bottomSpacing: bottomSpacing + 30 });
     } else {
       $(".side-menu__content").unstick();
     }
