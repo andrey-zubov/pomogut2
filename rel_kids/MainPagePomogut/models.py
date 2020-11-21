@@ -93,11 +93,15 @@ class Partners(models.Model):
         return format_html(f"<img src='{self.url_img}' width='70px'>")
 
 
-class SocialReabilitation(models.Model):
+class MainPageLinks(models.Model):
     class Meta:
-        verbose_name = 'Сcылки для "Социальная реабилитация"'
-        verbose_name_plural = 'Сcылки для "Социальная реабилитация"'
+        verbose_name = 'Сcылки для Блоков главной страницы'
+        verbose_name_plural = 'Сcылки для Блоков главной страницы'
 
+    block = models.ForeignKey(
+        'MainPageBlock',
+        on_delete=models.CASCADE,
+    )
     url = models.URLField(verbose_name='Ссылка')
     title = models.CharField(max_length=25, verbose_name='название ссылки')
     mediafile = MediaFileForeignKey(MediaFile, related_name='+',
@@ -110,3 +114,29 @@ class SocialReabilitation(models.Model):
     @property
     def get_img(self):
         return join(settings.MEDIA_URL, str(self.mediafile.file))
+
+
+class MainPageBlock(models.Model):
+    class Meta:
+        verbose_name = 'Блок главной страницы'
+        verbose_name_plural = 'Блоки главной страницы'
+
+    title = models.CharField(
+        max_length=256,
+        verbose_name='Название направления'
+    )
+    text = models.TextField()
+    tel = models.CharField(
+        max_length=256,
+        verbose_name='Телефон'
+    )
+    bitrix = models.CharField(
+        max_length=256,
+        blank=True,
+        null=True
+    )
+
+    def __str__(self):
+        return self.title
+
+
