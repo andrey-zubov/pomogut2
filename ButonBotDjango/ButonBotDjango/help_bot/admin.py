@@ -43,39 +43,21 @@ class NeedHelpAdmin(DraggableMPTTAdmin):
     search_fields = ('name',)
     autocomplete_fields = ('parent', 'link_to')
 
-    def changelist_view(self, request, *args, **kwargs):
-        if request.is_ajax() and request.POST.get("cmd") == "move_node":
-            pass
-
-        response = super().changelist_view(request, *args, **kwargs)
-
+    def tree_actions(self, item):
         try:
-            response.context_data["media"] = response.context_data[
-                                                 "media"
-                                             ] + forms.Media(
-                css={
-                    "all": ["mptt/draggable-admin.css"],
-                },
-                js=[
-                    "admin/js/vendor/jquery/jquery.js",
-                    "admin/js/jquery.init.js",
-                    JS(
-                        "mptt/draggable-admin.js",
-                        {
-                            "id": "draggable-admin-context",
-                            "data-context": json.dumps(
-                                self._tree_context(request), cls=DjangoJSONEncoder
-                            ),
-                        },
-                    ),
-                ],
-            )
-        except (AttributeError, KeyError):
-            # Not meant for us if there is no context_data attribute (no
-            # TemplateResponse) or no media in the context.
-            pass
+            url = item.get_absolute_url()
+        except Exception:  # Nevermind.
+            url = ""
 
-        return response
+        return format_html(
+            '<div class="tree-node" data-pk="{}" data-level="{}"'
+            ' data-url="{}"></div>',
+            item.pk,
+            item._mpttfield("level"),
+            url,
+        )
+
+    tree_actions.short_description = ""
 
 
 class TelegramAdmin(admin.ModelAdmin):
