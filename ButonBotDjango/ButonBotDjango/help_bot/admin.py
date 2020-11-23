@@ -39,7 +39,7 @@ class NeedHelpAdmin(DraggableMPTTAdmin):
         }),
     )
     list_display = ('tree_actions', 'name', 'parent', 'user_input', 'question', 'go_default', 'link_to', 'go_back', 'is_default')
-    list_display_links = None
+    list_display_links = ('name',)
     search_fields = ('name',)
     autocomplete_fields = ('parent', 'link_to')
 
