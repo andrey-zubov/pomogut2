@@ -1,7 +1,15 @@
+from django import forms
 from django.contrib import admin
 from django.template.response import TemplateResponse
 from django.urls import path
-from mptt.admin import MPTTModelAdmin
+from mptt.admin import MPTTModelAdmin, DraggableMPTTAdmin
+from django.utils.html import format_html
+from django.utils.translation import gettext as _
+
+from js_asset import JS
+import json
+from django.core.serializers.json import DjangoJSONEncoder
+
 
 from help_bot.models import (NeedHelp, TelegramBot, HelpText, StartMessage, StatisticTelegram,
                              StatisticAttendance, ChatBotIframe, EditionButtons)
@@ -14,7 +22,7 @@ class InlineHelpText(admin.StackedInline):
     fields = ('name', ('text', 'geo_link_name', 'address', 'latitude', 'longitude'), 'telegram_geo_url')
 
 
-class NeedHelpAdmin(MPTTModelAdmin):
+class NeedHelpAdmin(DraggableMPTTAdmin):
     # TODO:
     #  1) tree admin based on FeinCMS offering drag-drop functionality for moving nodes
     #  http://django-mptt.github.io/django-mptt/admin.html#mptt-admin-draggablempttadmin
@@ -23,15 +31,51 @@ class NeedHelpAdmin(MPTTModelAdmin):
 
     inlines = [InlineHelpText]
     model = NeedHelp
+    change_list_template = "admin/mptt_change_list.html"
 
     fieldsets = (
         (None, {
             'fields': (('name', 'parent'), 'user_input', 'question', ('go_back', 'go_default', 'is_default', 'link_to'))
         }),
     )
-    list_display = ('name', 'parent', 'user_input', 'question', 'go_default', 'link_to', 'go_back', 'is_default')
+    list_display = ('tree_actions', 'name', 'parent', 'user_input', 'question', 'go_default', 'link_to', 'go_back', 'is_default')
+    list_display_links = ('name',)
     search_fields = ('name',)
     autocomplete_fields = ('parent', 'link_to')
+
+    def changelist_view(self, request, *args, **kwargs):
+        if request.is_ajax() and request.POST.get("cmd") == "move_node":
+            pass
+
+        response = super().changelist_view(request, *args, **kwargs)
+
+        try:
+            response.context_data["media"] = response.context_data[
+                                                 "media"
+                                             ] + forms.Media(
+                css={
+                    "all": ["mptt/draggable-admin.css"],
+                },
+                js=[
+                    "admin/js/vendor/jquery/jquery.js",
+                    "admin/js/jquery.init.js",
+                    JS(
+                        "mptt/draggable-admin.js",
+                        {
+                            "id": "draggable-admin-context",
+                            "data-context": json.dumps(
+                                self._tree_context(request), cls=DjangoJSONEncoder
+                            ),
+                        },
+                    ),
+                ],
+            )
+        except (AttributeError, KeyError):
+            # Not meant for us if there is no context_data attribute (no
+            # TemplateResponse) or no media in the context.
+            pass
+
+        return response
 
 
 class TelegramAdmin(admin.ModelAdmin):
