@@ -81,13 +81,26 @@ def org_info(request, slug):
 
 
 def news_view(request):
-    news = NewsPage.objects.filter(template_key='widgets/newspage.html').order_by('-publication_date')
+    news = NewsPage.objects.filter().order_by('-publication_date')
     down_cats = Page.objects.filter(test_category='down')
     up_cats = Page.objects.filter(test_category='up')
 
     paginator = Paginator(news, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
+
+    if not page_number:
+        page_number = 1
+    else:
+        page_number = int(page_number)
+    prev_pages_amount = 10  # define links amount
+    next_pages_amount = 10
+
+    max_page = page_number + next_pages_amount + 1 if page_number + next_pages_amount + 1 < paginator.num_pages else paginator.num_pages
+    min_page = page_number - prev_pages_amount if page_number - prev_pages_amount > 0 else 1
+
+    prev_links = [i for i in range(min_page, page_number)]
+    next_links = [i for i in range(page_number+1, max_page)]
 
     return render(
         request,
@@ -96,7 +109,9 @@ def news_view(request):
             'news': news,
             'down_cats': down_cats,
             'up_cats': up_cats,
-            'page_obj': page_obj
+            'page_obj': page_obj,
+            'prev_links': prev_links,
+            'next_links': next_links,
         }
     )
 

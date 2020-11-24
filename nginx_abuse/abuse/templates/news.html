@@ -70,28 +70,23 @@
             </div>
 
             <div class="pagination">
-              <span class="pages">
-                Cтраница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
-              </span>
-
-              <a class="previous" href="/">«</a>
-
               {% if page_obj.has_previous %}
                 <a href="?page=1">&laquo; В начало</a>
-                <a href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
+                {% for prev in prev_links %}
+                   <a href="?page={{ prev }}">{{prev}}</a>
+                {% endfor %}
               {% endif %}
               
-              <span class="current">3</span>
-
-              <span class="extend">...</span>
+              <span class="current">{{ page_obj.number }}</span>
+{#              <span class="extend">...</span>#}
 
               {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">Следующая</a>
+                {% for next in next_links %}
+                   <a href="?page={{ next }}">{{next}}</a>
+                {% endfor %}
                 <a href="?page={{ page_obj.paginator.num_pages }}">Последняя &raquo;</a>
               {% endif %}
-              
-              <span class="extend">...</span>
-             <a class="next" href="/">»</a>
+
           </div>
           </div>
         </div>
