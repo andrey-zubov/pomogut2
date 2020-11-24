@@ -44,7 +44,7 @@ services:
     build:
       context: .
       dockerfile: ./ButonBotDjango/compose/django/Dockerfile
-    container_name: django_web_orig
+    container_name: chatbot
     restart: always
     volumes:
       - ./ButonBotDjango/ButonBotDjango:/src3
@@ -67,7 +67,7 @@ services:
     build:
       context: .
       dockerfile: ./nginx_abuse/Dockerfile
-    container_name: django_pomog_test2
+    container_name: abuse
     volumes:
       - ./nginx_abuse/abuse:/src
     ports:
@@ -80,7 +80,7 @@ services:
     build:
       context: .
       dockerfile: ./rel_kids/Dockerfile
-    container_name: django_pomogutkids_test2
+    container_name: pomogutkids
     volumes:
       - ./rel_kids:/src2
     ports:
