@@ -130,6 +130,10 @@ class MainPageBlock(models.Model):
         max_length=256,
         verbose_name='Телефон'
     )
+    website = models.CharField(
+        max_length=256,
+        verbose_name='сайт'
+    )
     bitrix = models.CharField(
         max_length=256,
         blank=True,
