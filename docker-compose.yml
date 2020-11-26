@@ -90,12 +90,12 @@ services:
     tty: true    
     command: python3 manage.py runserver 0.0.0.0:8400
 
-certbot:
-  container_name: certbot
-  image: certbot/certbot
-  volumes:
-    - ./certbot/conf:/etc/letsencrypt
-    - ./certbot/www:/var/www/certbot
+  certbot:
+    container_name: certbot
+    image: certbot/certbot
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
 
 
 networks:
