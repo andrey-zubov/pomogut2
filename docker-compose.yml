@@ -20,7 +20,7 @@ services:
       - ./ButonBotDjango/config/nginx:/etc/nginx/conf.d
       - ./ButonBotDjango/logs:/logs
 
-      - ./certbot/conf:/etc/letsencrypt
+      - /etc/letsencrypt:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
       # - /var/www/httpd-cert/www-root:/etc/ssl        
     depends_on:
