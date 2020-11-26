@@ -19,6 +19,9 @@ services:
       - ./ButonBotDjango/ButonBotDjango:/src3
       - ./ButonBotDjango/config/nginx:/etc/nginx/conf.d
       - ./ButonBotDjango/logs:/logs
+
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
       # - /var/www/httpd-cert/www-root:/etc/ssl        
     depends_on:
       - web3
@@ -63,7 +66,6 @@ services:
       && python3 manage.py runserver 0.0.0.0:8000"
 
   web1:
-
     build:
       context: .
       dockerfile: ./nginx_abuse/Dockerfile
@@ -87,7 +89,14 @@ services:
       - 8400:80
     tty: true    
     command: python3 manage.py runserver 0.0.0.0:8400
-    
+
+certbot:
+  container_name: certbot
+  image: certbot/certbot
+  volumes:
+    - ./certbot/conf:/etc/letsencrypt
+    - ./certbot/www:/var/www/certbot
+
 
 networks:
   botnet:
