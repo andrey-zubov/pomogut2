@@ -34375,3 +34375,795 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
     raise InvalidToken()
 telegram.error.InvalidToken: Invalid token
+2020-11-27 10:48:50,328 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:48:52,648 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:48:54,740 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:48:57,047 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:48:59,759 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:49:03,303 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:51:04,889 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:51:19,112 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:51:26,126 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:51:31,239 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:51:34,425 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:51:39,394 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:51:45,287 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:51:55,341 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:52:44,465 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:52:54,483 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:52:59,783 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:53:02,298 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:53:06,002 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:53:49,504 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:53:59,755 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:54:30,984 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:54:37,089 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:54:41,514 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:54:44,154 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:54:46,983 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:54:50,830 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:54:56,698 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:55:05,215 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:55:20,497 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:55:48,558 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:56:42,304 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:57:44,572 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:59:17,824 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:59:24,302 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:59:27,629 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:59:31,520 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:59:35,990 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:59:40,301 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:59:45,802 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 10:59:54,584 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 11:00:10,067 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 11:00:37,755 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 11:01:31,237 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 11:04:21,608 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 11:04:33,501 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 11:10:11,859 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 11:11:42,123 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 11:11:51,230 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 11:11:56,179 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 11:11:58,582 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 11:12:01,601 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 11:12:05,658 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 11:12:26,349 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 11:12:35,644 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 11:59:16,191 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 11:59:26,462 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 12:00:25,202 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 12:00:31,874 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 12:00:35,638 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 12:00:38,170 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 12:00:40,937 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 12:00:44,895 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 12:00:51,040 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 12:01:00,043 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token
+2020-11-27 12:01:15,543 - telegram_bot - ERROR - Exception in TelegramBot token:
+Invalid token
+Traceback (most recent call last):
+  File "help_bot/telega.py", line 109, in go_go_bot
+    updater = Updater(token=bot_token, use_context=True)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/ext/updater.py", line 159, in __init__
+    self.bot = Bot(token,
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 130, in __init__
+    self.token = self._validate_token(token)
+  File "/usr/local/lib/python3.8/dist-packages/telegram/bot.py", line 197, in _validate_token
+    raise InvalidToken()
+telegram.error.InvalidToken: Invalid token

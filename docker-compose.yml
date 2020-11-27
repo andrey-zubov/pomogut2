@@ -79,8 +79,8 @@ services:
     #      command: sh -c
     #        "python3 manage.py makemigrations && python3 manage.py migrate && gunicorn config.wsgi -b 0.0.0.0:8000"
     # new
-    ports:
-      - 8000:80
+    expose:
+      - 8000
     # new
     command: bash -c
       "python3 manage.py migrate
@@ -95,8 +95,8 @@ services:
     container_name: abuse
     volumes:
       - ./nginx_abuse/abuse:/src
-    ports:
-      - 8200:80
+    expose:
+      - 8200
     tty: true    
     command: python3 manage.py runserver 0.0.0.0:8200
 
@@ -110,8 +110,8 @@ services:
     container_name: pomogutkids
     volumes:
       - ./rel_kids:/src2
-    ports:
-      - 8400:80
+    expose:
+      - 8400
     tty: true    
     command: python3 manage.py runserver 0.0.0.0:8400
     
