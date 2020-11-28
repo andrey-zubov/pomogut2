@@ -8,6 +8,8 @@ from help_bot.utility import (check_input, try_except)
 
 def chat_req_get(request) -> str:
     """ Web chat bot main logic. """
+    website = request.get_host()
+
     if any(request.GET.values()):
         ui = request.GET['us_in'].strip()
         ip = get_client_ip(request)
@@ -27,12 +29,17 @@ def chat_req_get(request) -> str:
     else:
         """ Chat page load. """
         logger_web_chat().info("request.GET is empty.")
-        return start_chat()
+        return start_chat(website=website)
 
 
-def start_chat(sorry=False, help_type=False) -> str:
+def start_chat(sorry=False, help_type=False, website=None) -> str:
     """ Start Questions menu. """
-    root_nodes = NeedHelp.objects.root_nodes()
+    print(website)
+    if NeedHelp.objects.root_nodes().filter(website=website).exists():
+        root_nodes = NeedHelp.objects.root_nodes().filter(website=website)
+    else:
+        root_nodes = NeedHelp.objects.root_nodes()
+
     btn_text = [i.user_input for i in root_nodes if not i.is_default]
 
     if help_type:

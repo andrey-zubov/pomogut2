@@ -13,6 +13,13 @@ class NeedHelp(MPTTModel):
                             related_name='children', db_index=True,
                             verbose_name="Родитель", help_text="Кто родитель этого элемента.")
     """ Normal model fields. """
+    website = models.CharField(
+        max_length=512,
+        verbose_name="на каких сайтах бот включен",
+        help_text="в формате: 'example.com example2.com test.example2.com'",
+        blank=True,
+        null=True
+    )
     user_input = models.CharField(max_length=100, default='', blank=False,
                                   verbose_name="Название кнопки",
                                   help_text="Название кнопки, которое отправится в чат.")

@@ -35,7 +35,7 @@ class NeedHelpAdmin(DraggableMPTTAdmin):
 
     fieldsets = (
         (None, {
-            'fields': (('name', 'parent'), 'user_input', 'question', ('go_back', 'go_default', 'is_default', 'link_to'))
+            'fields': (('name', 'parent'),  'user_input', 'website', 'question', ('go_back', 'go_default', 'is_default', 'link_to'))
         }),
     )
     list_display = ('tree_actions', 'name', 'parent', 'user_input', 'question', 'go_default', 'link_to', 'go_back', 'is_default')
