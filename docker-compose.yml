@@ -4,26 +4,43 @@ services:
   nginx:
     image: nginx
     container_name: nginx_chat_orig
-    restart: always
+    restart: unless-stopped
+    networks:
+      nginx_net:
     #networks:
     #  - botnet
     ports:
       - "80:80"
       - "443:443"
-#      - 8000:8000
-#      - 8200:8200
-#      - 8300:8300
     volumes:
-      - ./nginx_abuse/abuse:/src  
+      - ./nginx_abuse/abuse:/src
       - ./rel_kids/:/src2
       - ./ButonBotDjango/ButonBotDjango:/src3
       - ./ButonBotDjango/config/nginx:/etc/nginx/conf.d
       - ./ButonBotDjango/logs:/logs
-      # - /var/www/httpd-cert/www-root:/etc/ssl        
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+      # - /var/www/httpd-cert/www-root:/etc/ssl
     depends_on:
       - web3
       - web2
       - web1
+    command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
+
+  certbot:
+    # Новый контейнер, который запуститься вместе с nginx
+    container_name: certbot
+    image: certbot/certbot
+    restart: unless-stopped
+    # Образ берется с docker hub
+    networks:
+      nginx_net:
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+      # Подключаем к той-же сети, что и остальные контейнеры
+    entrypoint:  "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+
 
   bot:
     build:
@@ -31,6 +48,8 @@ services:
       dockerfile: ButonBotDjango/compose/django/Dockerfile
     container_name: telegram-bot_orig
     restart: always
+    networks:
+      nginx_net:
     #    networks:
     #      - botnet
     volumes:
@@ -44,7 +63,9 @@ services:
     build:
       context: .
       dockerfile: ./ButonBotDjango/compose/django/Dockerfile
-    container_name: django_web_orig
+    networks:
+      nginx_net:
+    container_name: chatbot
     restart: always
     volumes:
       - ./ButonBotDjango/ButonBotDjango:/src3
@@ -55,24 +76,25 @@ services:
     #      command: sh -c
     #        "python3 manage.py makemigrations && python3 manage.py migrate && gunicorn config.wsgi -b 0.0.0.0:8000"
     # new
-    ports:
-      - 8000:80
+    expose:
+      - 8000
     # new
     command: bash -c
       "python3 manage.py migrate
       && python3 manage.py runserver 0.0.0.0:8000"
 
   web1:
-
     build:
       context: .
       dockerfile: ./nginx_abuse/Dockerfile
-    container_name: django_pomog_test2
+    networks:
+      nginx_net:
+    container_name: abuse
     volumes:
       - ./nginx_abuse/abuse:/src
-    ports:
-      - 8200:80
-    tty: true    
+    expose:
+      - 8200
+    tty: true
     command: python3 manage.py runserver 0.0.0.0:8200
 
 
@@ -80,22 +102,27 @@ services:
     build:
       context: .
       dockerfile: ./rel_kids/Dockerfile
-    container_name: django_pomogutkids_test2
+    networks:
+      nginx_net:
+    container_name: pomogutkids
     volumes:
       - ./rel_kids:/src2
-    ports:
-      - 8400:80
-    tty: true    
+    expose:
+      - 8400
+    tty: true
     command: python3 manage.py runserver 0.0.0.0:8400
-    
+
 
 networks:
-  botnet:
-    driver: bridge
-    driver_opts:
-      "com.docker.network.bridge.enable_icc": "true"
-      "com.docker.network.bridge.enable_ip_masquerade": "true"
-      "com.docker.network.bridge.host_binding_ipv4": "0.0.0.0"
-      "com.docker.network.bridge.name": "br0"
-      "com.docker.network.driver.mtu": "1500"
+#  botnet:
+#    driver: bridge
+#    driver_opts:
+#      "com.docker.network.bridge.enable_icc": "true"
+#      "com.docker.network.bridge.enable_ip_masquerade": "true"
+#      "com.docker.network.bridge.host_binding_ipv4": "0.0.0.0"
+#      "com.docker.network.bridge.name": "br0"
+#      "com.docker.network.driver.mtu": "1500"
 
+  nginx_net:
+
+    name: nginx_net

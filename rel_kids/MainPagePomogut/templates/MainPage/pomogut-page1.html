@@ -52,7 +52,7 @@
       <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12 center-block header-logo">
         <img class="center-block"  src="{% static './MainPage/images/header/logo-pomogut.svg' %}" alt="">
         <h3 class="block-center">Мы  оказываем информационную помощь людям в трудной жизненной ситуации</h3>
-        <a  href="#elm" class=" go_to btn btn-write center-block" ><p>Наши направления</p></a>
+        <a  href="#{{ page_blocks.0.id }}" class=" go_to btn btn-write center-block" ><p>Наши направления</p></a>
       </div>
     </div>
   </header>
@@ -65,123 +65,50 @@
           предложений и услуг.</p>
       </div>
     </div>
-
-  </div>
-  <div id="elm" class="project-1 project-1-background">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-5 col-md-6 col-sm-12  col-xs-12  project-1-title  ">
-          <a href="//kids.pomogut.by"><h2 >Безопасность детей в сети</h2></a>
-          <p>На сайте pomogut.by мы собрали для вас самую важную информацию о проблемах в сети.
-            Как вовремя понять что такое буллинг?
-            Куда обращаться и кто может помочь? Как с этим бороться ? На эти и многие
-            другие вопросы вы найдете ответ на сайте.
-          </p>
-          <a href="tel:{{ phones.0 }}" class="main"><div class="buttons-number"><p>{{ phones.0 }}</p></div></a>
-          <a class="main" href="https://pomogut.bitrix24.by/online/kids"><div class="buttons-chat "><img src="{% static './MainPage/images/project/chat-icon.svg' %}" alt=""></div></a>
-        </div>
-        <div class="col-lg-offset-1 col-md-6 col-sm-12 ">
-          <div class=" project-1-slider">
-            {% for se in security %}
-              <div class="main-section-wave">
-                <div class="image-wave">
-                  <div class="image-wave-background"><img src="{% static './MainPage/images/project/wave.svg' %}" alt="">
-                    <div class="title-link-1">
-                      <p>{{ se.title }}</p><a href="{{ se.url }}">Подробнее</a>
-                    </div>
-                  </div>
-                  <div class="under-image-wave-background"><img class="center-block" src="{{ se.get_img }}" alt=""></div>
-                </div>
-              </div>
-            {% endfor %}
-          </div>
-          <div class="arrows col-lg-6 col-lg-offset-6">
-            <img class="next-1 " src="{% static './MainPage/images/project/arrows/arrow-prev.svg' %}" alt="">
-            <img class="prev-1 " src="{% static './MainPage/images/project/arrows/arrow-next.svg' %}" alt="">
-          </div>
-          <a  href="tel:{{ phones.0 }}" class="center-block non-main"><div class="buttons-number tablet"><p>{{ phones.0 }}</p></div></a>
-          <a class="non-main" href="https://pomogut.bitrix24.by/online/kids"><div class="buttons-chat mobile"><img src="{% static './MainPage/images/project/chat-icon.svg' %}" alt=""></div></a>
-        </div>
-      </div>
-    </div>
-    <a  href=""></a>
-  </div>
-  <div class="project-1  project-2-background">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-5 col-md-6 col-sm-12  col-xs-12  project-1-title  ">
-          <a href="//abuse.pomogut.by/"><h2 >Помощь наркозависимым</h2></a>
-          <p>На сайте pomogut.by мы собрали для вас самую важную информацию о проблеме наркомании.
-            Как вовремя распознать в ребенке начинающего наркомана?
-            Куда обращаться и кто может помочь? Какая ответственность
-            предусмотрена за распространение наркотиков? На эти и многие
-            другие вопросы вы найдете ответ на сайте.
-          </p>
-          <a href="tel:+375173110000" class="main"><div class="buttons-number"><p>375(17)3110000</p></div></a>
-          <a class="main" href="https://pomogut.bitrix24.by/online/abuse"><div class="buttons-chat"><img src="{% static './MainPage/images/project/chat-icon.svg' %}" alt=""></div></a>
-        </div>
-        <div class=" col-lg-offset-1 col-md-6 col-sm-12  ">
-          <div class=" project-2-slider">
-            {% for ad in addicts %}
-            <div class="main-section-wave">
-                <div class="image-wave">
-                  <div class="image-wave-background"><img src="{% static './MainPage/images/project/wave.svg' %}" alt="">
-                    <div class="title-link-1">
-                      <p>{{ ad.title }}</p><a href="{{ ad.url }}">Подробнее</a>
-                    </div>
-                  </div>
-                  <div class="under-image-wave-background"><img class="center-block" src="{{ ad.get_img }}" alt=""></div>
-                </div>
-              </div>
-            {% endfor %}
-          </div>
-          <div class="arrows col-lg-6 col-lg-offset-6">
-            <img class="next-2" src="{% static './MainPage/images/project/green/arrow-prev.svg' %}" alt="">
-            <img class="prev-2" src="{% static './MainPage/images/project/green/arrow-next.svg' %}" alt="">
-             </div>
-          <a class="non-main" href="tel:+375173110000"><div class="buttons-number tablet"><p>+375173110000</p></div></a>
-          <a class="non-main" href="https://pomogut.bitrix24.by/online/abuse"><div class="buttons-chat mobile"><img src="{% static './MainPage/images/project/chat-icon.svg' %}" alt=""></div></a>
-        </div>
-      </div>
-    </div>
   </div>
 
-  <div id="released" class="project-1 project-1-background">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-5 col-md-6 col-sm-12  col-xs-12  project-1-title  ">
-          <a href="//released.pomogut.by"><h2>Социальная реабилитация</h2></a>
-          <p>Освобожденному приходится преодолевать многочисленные препятствия, как внутренние субъективные, так и внешние, от него не зависящие.
-            На сайте pomogut.by собрана информация для лиц, освобожденных из мест лишения свободы
-            и состоящих на учетах в уголовно-исполнительных инспекциях территориальных органов внутренних дел.
-          </p>
-          <a href="tel:+375173110000" class="main"><div class="buttons-number"><p>+375173110000</p></div></a>
-{#          <a class="main" href="https://pomogut.bitrix24.by/online/kids"><div class="buttons-chat "><img src="{% static './MainPage/images/project/chat-icon.svg' %}" alt=""></div></a>#}
-        </div>
-        <div class="col-lg-offset-1 col-md-6 col-sm-12 ">
-          <div class=" project-1-slider">
-            <div class="main-section-wave">
-              <div class="image-wave">
-                <div class="image-wave-background"><img src="{% static './MainPage/images/project/wave.svg' %}" alt="">
-                  <div class="title-link-1">
-                    <p>Кому поможет эта страница?</p><a href="//released.pomogut.by">Подробнее</a>
+  {%  for block in page_blocks %}
+    <div id="{{block.id}}" class="{% cycle 'project-1 project-1-background' 'project-1  project-2-background' %}">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 col-md-6 col-sm-12  col-xs-12  project-1-title  ">
+            <a href="{{ block.website }}"><h2>{{ block.title }}</h2></a>
+            <p>{{block.text}}
+            </p>
+            <a href="tel:+375173110000" class="main"><div class="buttons-number"><p>{{ block.tel }}</p></div></a>
+            {% if block.bitrix %}
+              <a class="main" href="{{ block.bitrix }}"><div class="buttons-chat "><img src="{% static './MainPage/images/project/chat-icon.svg' %}" alt=""></div></a>
+            {% endif %}
+          </div>
+          <div class="col-lg-offset-1 col-md-6 col-sm-12 ">
+            <div class=" project-1-slider">
+
+               {% for link in block.mainpagelinks_set.all %}
+                <div class="main-section-wave">
+                  <div class="image-wave">
+                    <div class="image-wave-background"><img src="{% static './MainPage/images/project/wave.svg' %}" alt="">
+                      <div class="title-link-1">
+                        <p>{{ link.title }}</p><a href="{{ link.url }}">Подробнее</a>
+                      </div>
+                    </div>
+                    <div class="under-image-wave-background"><img class="center-block" src="{{ link.get_img }}" alt=""></div>
                   </div>
                 </div>
-                <div class="under-image-wave-background"><img class="center-block" src="{% static './MainPage/images/released/relese.jpeg' %}" alt=""></div>
-              </div>
+              {% endfor %}
+
             </div>
+            <div class="arrows col-lg-6 col-lg-offset-6">
+              <img class="next-1 " src="{% static './MainPage/images/project/arrows/arrow-prev.svg' %}" alt="">
+              <img class="prev-1 " src="{% static './MainPage/images/project/arrows/arrow-next.svg' %}" alt="">
+            </div>
+            <a  href="tel:{{ block.tel }}" class="center-block non-main"><div class="buttons-number tablet"><p>{{ block.tel }}</p></div></a>
+            <a class="non-main" href="https://pomogut.bitrix24.by/online/kids"><div class="buttons-chat mobile"><img src="{% static './MainPage/images/project/chat-icon.svg' %}" alt=""></div></a>
           </div>
-{#          <div class="arrows col-lg-6 col-lg-offset-6">#}
-{#            <img class="next-1 " src="{% static './MainPage/images/project/arrows/arrow-prev.svg' %}" alt="">#}
-{#            <img class="prev-1 " src="{% static './MainPage/images/project/arrows/arrow-next.svg' %}" alt="">#}
-{#          </div>#}
-          <a  href="tel:+375173110000" class="center-block non-main"><div class="buttons-number tablet"><p>+375173110000</p></div></a>
-          <a class="non-main" href="https://pomogut.bitrix24.by/online/kids"><div class="buttons-chat mobile"><img src="{% static './MainPage/images/project/chat-icon.svg' %}" alt=""></div></a>
         </div>
       </div>
+      <a  href=""></a>
     </div>
-    <a  href=""></a>
-  </div>
+  {% endfor %}
 
   <div class="feedback">
     <div class="row">

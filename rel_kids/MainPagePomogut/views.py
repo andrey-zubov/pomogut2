@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Help_for_addicts_links, Network_security_links, To_contact_us, Partners
-from .models import ContactInformation
+from .models import ContactInformation, MainPageBlock
 from django.core.validators import validate_email
 
 
@@ -9,9 +9,10 @@ def hello(request):
     kwargs = {}
     cont = [i for i in ContactInformation.objects.all() if i.flag]
     kwargs['phones'] = [i.phone for i in cont]
-    kwargs['addicts'] = Help_for_addicts_links.objects.all()
-    kwargs['security'] = Network_security_links.objects.all()
+    # kwargs['addicts'] = Help_for_addicts_links.objects.all()
+    # kwargs['security'] = Network_security_links.objects.all()
     kwargs['partners'] = Partners.objects.all()
+    kwargs['page_blocks'] = MainPageBlock.objects.all()
     return render(request, 'MainPage/pomogut-page1.html', kwargs)
 
 

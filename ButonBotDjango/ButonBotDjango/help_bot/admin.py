@@ -1,7 +1,15 @@
+from django import forms
 from django.contrib import admin
 from django.template.response import TemplateResponse
 from django.urls import path
-from mptt.admin import MPTTModelAdmin
+from mptt.admin import MPTTModelAdmin, DraggableMPTTAdmin
+from django.utils.html import format_html
+from django.utils.translation import gettext as _
+
+from js_asset import JS
+import json
+from django.core.serializers.json import DjangoJSONEncoder
+
 
 from help_bot.models import (NeedHelp, TelegramBot, HelpText, StartMessage, StatisticTelegram,
                              StatisticAttendance, ChatBotIframe, EditionButtons)
@@ -14,7 +22,7 @@ class InlineHelpText(admin.StackedInline):
     fields = ('name', ('text', 'geo_link_name', 'address', 'latitude', 'longitude'), 'telegram_geo_url')
 
 
-class NeedHelpAdmin(MPTTModelAdmin):
+class NeedHelpAdmin(DraggableMPTTAdmin):
     # TODO:
     #  1) tree admin based on FeinCMS offering drag-drop functionality for moving nodes
     #  http://django-mptt.github.io/django-mptt/admin.html#mptt-admin-draggablempttadmin
@@ -23,15 +31,33 @@ class NeedHelpAdmin(MPTTModelAdmin):
 
     inlines = [InlineHelpText]
     model = NeedHelp
+    change_list_template = "admin/mptt_change_list.html"
 
     fieldsets = (
         (None, {
             'fields': (('name', 'parent'), 'user_input', 'question', ('go_back', 'go_default', 'is_default', 'link_to'))
         }),
     )
-    list_display = ('name', 'parent', 'user_input', 'question', 'go_default', 'link_to', 'go_back', 'is_default')
+    list_display = ('tree_actions', 'name', 'parent', 'user_input', 'question', 'go_default', 'link_to', 'go_back', 'is_default')
+    list_display_links = ('name',)
     search_fields = ('name',)
     autocomplete_fields = ('parent', 'link_to')
+
+    def tree_actions(self, item):
+        try:
+            url = item.get_absolute_url()
+        except Exception:  # Nevermind.
+            url = ""
+
+        return format_html(
+            '<div class="tree-node" data-pk="{}" data-level="{}"'
+            ' data-url="{}"></div>',
+            item.pk,
+            item._mpttfield("level"),
+            url,
+        )
+
+    tree_actions.short_description = ""
 
 
 class TelegramAdmin(admin.ModelAdmin):
