@@ -289,7 +289,7 @@
     position: relative;
 }
 
-.pulse-button_container:after{
+.pulse-button_container--active:after{
     content: '';
     position: absolute;
     top: 50%;
@@ -299,9 +299,9 @@
     border-radius: 50%;
     border: 1px solid #00adf2;
     transform: translate(-50%, -50%) scale(1.5);
-    animation: pulse 1.5s infinite;
-
     -webkit-transform: translate(-50%, -50%) scale(1.5);
+
+    animation: pulse 1.5s infinite;
     -webkit-animation-name: pulse;
     -webkit-animation-duration: 1.5s;
     -webkit-animation-iteration-count: infinite;

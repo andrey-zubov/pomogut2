@@ -31,15 +31,6 @@
                 var user_t_new = us_t.clone();
                 var btn_s_new = btn_s.clone();
 
-                let chatFrame = document.querySelector('.help_chat_body_div');
-                let btnRestore = document.querySelector('.help_chat_btn_restore');
-                let btnsDiv = document.querySelector('.help_chat_buttons_div');
-
-                let btnsDivHeight = btnsDiv.getBoundingClientRect().height;
-                chatFrame.style.bottom = `${btnsDivHeight}px`;
-                btnRestore.style.bottom = `${btnsDivHeight + 10}px`;
-
-
                 var us_in = $("#id_user_input_help_chat").val();
                 if (us_in === '') {
                     if ($(this).text().length < 50) {
@@ -79,6 +70,13 @@
                         } else {
                             $("#id_show_hide_help_chat").animate({scrollTop: $("#id_chat_div_help_chat .help_chat_bot_text").last().position().top}, 1000);
                         }
+                        let chatFrame = document.querySelector('.help_chat_body_div');
+                        let btnRestore = document.querySelector('.help_chat_btn_restore');
+                        let btnsDiv = document.querySelector('.help_chat_buttons_div');
+
+                        let btnsDivHeight = btnsDiv.getBoundingClientRect().height;
+                        chatFrame.style.bottom = `${btnsDivHeight}px`;
+                        btnRestore.style.bottom = `${btnsDivHeight + 10}px`;
                     }
                 });
             }
