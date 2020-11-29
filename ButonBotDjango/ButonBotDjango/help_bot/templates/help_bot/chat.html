@@ -31,6 +31,15 @@
                 var user_t_new = us_t.clone();
                 var btn_s_new = btn_s.clone();
 
+                let chatFrame = document.querySelector('.help_chat_body_div');
+                let btnRestore = document.querySelector('.help_chat_btn_restore');
+                let btnsDiv = document.querySelector('.help_chat_buttons_div');
+
+                let btnsDivHeight = btnsDiv.getBoundingClientRect().height;
+                chatFrame.style.bottom = `${btnsDivHeight}px`;
+                btnRestore.style.bottom = `${btnsDivHeight + 10}px`;
+
+
                 var us_in = $("#id_user_input_help_chat").val();
                 if (us_in === '') {
                     if ($(this).text().length < 50) {
