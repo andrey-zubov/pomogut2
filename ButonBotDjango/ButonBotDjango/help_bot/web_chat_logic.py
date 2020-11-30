@@ -32,11 +32,12 @@ def chat_req_get(request, param) -> str:
         return start_chat(param=param)
 
 
-def start_chat(sorry=False, help_type=False, param='all') -> str:
+def start_chat(sorry=False, help_type=False, is_used_on=None, param='all') -> str:
     """ Start Questions menu. """
 
     if ChatParam.objects.filter(param=param).exists():
         is_used_on = ChatParam.objects.get(param=param).id
+
     if NeedHelp.objects.root_nodes().filter(params=is_used_on).exists():
         root_nodes = NeedHelp.objects.root_nodes().filter(params=is_used_on)  # filtration for abuse, kids, etc
     else:
