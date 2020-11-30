@@ -35,10 +35,10 @@ class NeedHelpAdmin(DraggableMPTTAdmin):
 
     fieldsets = (
         (None, {
-            'fields': (('name', 'parent'),'params' , 'user_input', 'question', ('go_back', 'go_default', 'is_default', 'link_to'))
+            'fields': (('name', 'parent'),'params', 'user_input', 'question', ('go_back', 'go_default', 'is_default', 'link_to'))
         }),
     )
-    list_display = ('tree_actions', 'name', 'parent', 'user_input', 'question', 'go_default', 'link_to', 'go_back', 'is_default')
+    list_display = ('tree_actions', 'name','is_root_on', 'parent',  'user_input', 'question', 'go_default', 'link_to', 'go_back', 'is_default')
     list_display_links = ('name',)
     search_fields = ('name',)
     autocomplete_fields = ('parent', 'link_to')
@@ -50,7 +50,7 @@ class NeedHelpAdmin(DraggableMPTTAdmin):
             url = ""
 
         return format_html(
-            '<div class="tree-node" data-pk="{}" data-level="{}"'
+            '<div class="tree-node" data-pk="{}" data-level="{}"'  # comment to off drag-n-drop
             ' data-url="{}"></div>',
             item.pk,
             item._mpttfield("level"),
@@ -58,6 +58,8 @@ class NeedHelpAdmin(DraggableMPTTAdmin):
         )
 
     tree_actions.short_description = ""
+
+
 
 
 class TelegramAdmin(admin.ModelAdmin):

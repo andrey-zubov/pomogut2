@@ -36,7 +36,7 @@ class NeedHelp(MPTTModel):
     params = models.ManyToManyField(
         ChatParam,
         help_text='выбор проектов, где будет отображен данный родитель',
-        null=True
+        blank=True
     )
     user_input = models.CharField(max_length=100, default='', blank=False,
                                   verbose_name="Название кнопки",
@@ -118,6 +118,9 @@ class NeedHelp(MPTTModel):
         self.statistic_telegram = st
 
         super(NeedHelp, self).save(**kwargs)
+
+    def is_root_on(self):
+        return list(self.params.all().values_list('name', flat=True))
 
 
 class TelegramBot(models.Model):
