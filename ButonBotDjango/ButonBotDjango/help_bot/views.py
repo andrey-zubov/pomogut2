@@ -19,13 +19,20 @@ class WebChatBot(TemplateView):
     """ Web chat bot pop-up. All Ajax requests come here. """
 
     def get(self, request, *args, **kwargs):
+        print(request.GET)
         save_site_statistic()
         return HttpResponse(chat_req_get(request))
 
 
 @xframe_options_exempt
-def web_chat(request):
+def web_chat(request, param):
     """ iframe window/widget """
     if request.method == "GET":
         save_site_statistic()
-        return render(request, template_name='help_bot/chat.html')
+        return render(
+            request,
+            template_name='help_bot/chat.html',
+            context={
+                "param": param,
+            }
+        )

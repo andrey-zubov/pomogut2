@@ -43,9 +43,13 @@
                 $("#id_chat_div_help_chat").css('position', 'relative');
                 $("#id_chat_div_help_chat").append(user_t_new);
 
+                let param = '{{ param }}'
                 $.ajax({
                     'url':{% url 'web_chat_bot' %},
-                    'data': {'us_in': us_in},
+                    'data': {
+                        'us_in': us_in,
+                        'param': param,
+                    },
                     success: function (data) {
                         var json_data = jQuery.parseJSON(data);
                         for (var r = 0; r < btn_length; r++) {
