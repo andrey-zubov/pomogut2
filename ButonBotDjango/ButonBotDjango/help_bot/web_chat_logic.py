@@ -1,14 +1,13 @@
 import json
 
 from help_bot.loger_set_up import logger_web_chat
-from help_bot.models import (NeedHelp, StartMessage, ChatPositionWeb, HelpText, EditionButtons)
+from help_bot.models import (NeedHelp, StartMessage, ChatPositionWeb, HelpText, EditionButtons, ChatParam)
 from help_bot.statistic import (save_web_chat_statistic)
 from help_bot.utility import (check_input, try_except)
 
 
 def chat_req_get(request, param) -> str:
     """ Web chat bot main logic. """
-
     # param is using for several chats branch logic (kids, abuse, etc)
 
     if any(request.GET.values()):
@@ -35,8 +34,10 @@ def chat_req_get(request, param) -> str:
 
 def start_chat(sorry=False, help_type=False, param='all') -> str:
     """ Start Questions menu. """
-    if param != 'all':
-        root_nodes = NeedHelp.objects.filter(id=5)  # filtration for abuse, kids, etc
+
+    if ChatParam.objects.filter(param=param).exists():
+        is_used_on = ChatParam.objects.get(param=param).id
+        root_nodes = NeedHelp.objects.root_nodes().filter(params=is_used_on)  # filtration for abuse, kids, etc
     else:
         root_nodes = NeedHelp.objects.root_nodes()
 

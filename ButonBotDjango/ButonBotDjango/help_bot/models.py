@@ -4,6 +4,26 @@ from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
 
 
+class ChatParam(models.Model):
+    class Meta:
+        verbose_name='_доступен на сайтах'
+        verbose_name_plural = '_доступен на сайтах'
+
+    name = models.CharField(
+        max_length=256,
+        verbose_name='название сайта, справочное',
+    )
+    param = models.CharField(
+        max_length=64,
+        verbose_name='параметр',
+        blank=True,
+        help_text='пустой - показывает все корневые варианты чата, иначе abuse, kids, released и тд. Используется в родителях, в древе диалога'
+    )
+
+    def __str__(self):
+        return self.name
+
+
 class NeedHelp(MPTTModel):
     """ Main chat-bot Model. """
     """ MPTT: http://django-mptt.github.io/django-mptt/models.html """
@@ -13,6 +33,11 @@ class NeedHelp(MPTTModel):
                             related_name='children', db_index=True,
                             verbose_name="Родитель", help_text="Кто родитель этого элемента.")
     """ Normal model fields. """
+    params = models.ManyToManyField(
+        ChatParam,
+        help_text='выбор проектов, где будет отображен данный родитель',
+        null=True
+    )
     user_input = models.CharField(max_length=100, default='', blank=False,
                                   verbose_name="Название кнопки",
                                   help_text="Название кнопки, которое отправится в чат.")

@@ -12,7 +12,7 @@ from django.core.serializers.json import DjangoJSONEncoder
 
 
 from help_bot.models import (NeedHelp, TelegramBot, HelpText, StartMessage, StatisticTelegram,
-                             StatisticAttendance, ChatBotIframe, EditionButtons)
+                             StatisticAttendance, ChatBotIframe, EditionButtons, ChatParam)
 from help_bot.statistic import get_chat_statistic
 
 
@@ -35,7 +35,7 @@ class NeedHelpAdmin(DraggableMPTTAdmin):
 
     fieldsets = (
         (None, {
-            'fields': (('name', 'parent'), 'user_input', 'question', ('go_back', 'go_default', 'is_default', 'link_to'))
+            'fields': (('name', 'parent'),'params' , 'user_input', 'question', ('go_back', 'go_default', 'is_default', 'link_to'))
         }),
     )
     list_display = ('tree_actions', 'name', 'parent', 'user_input', 'question', 'go_default', 'link_to', 'go_back', 'is_default')
@@ -128,3 +128,4 @@ class EditionButtonsAdmin(admin.ModelAdmin):
 
 admin.site.register(ChatBotIframe, ChatBotIframeAdmin)
 admin.site.register(EditionButtons, EditionButtonsAdmin)
+admin.site.register(ChatParam)
