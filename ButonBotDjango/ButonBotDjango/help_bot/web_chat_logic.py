@@ -37,6 +37,7 @@ def start_chat(sorry=False, help_type=False, param='all') -> str:
 
     if ChatParam.objects.filter(param=param).exists():
         is_used_on = ChatParam.objects.get(param=param).id
+    if NeedHelp.objects.root_nodes().filter(params=is_used_on).exists():
         root_nodes = NeedHelp.objects.root_nodes().filter(params=is_used_on)  # filtration for abuse, kids, etc
     else:
         root_nodes = NeedHelp.objects.root_nodes()
