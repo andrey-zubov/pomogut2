@@ -16,7 +16,7 @@ urlpatterns = [
     url(r'^pomog/', include('cms.cms_urls')),
     url(r'admin/', admin_choice),
     url(r'admin-kids/', include(admin.site.urls)),
-    url(r'', include('feincms.urls'))
+  #  url(r'', include('feincms.urls'))
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
