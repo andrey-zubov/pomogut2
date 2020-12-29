@@ -90,6 +90,7 @@ services:
     networks:
       nginx_net:
     container_name: abuse
+    restart: always
     volumes:
       - ./nginx_abuse/abuse:/src
     expose:
@@ -105,6 +106,7 @@ services:
     networks:
       nginx_net:
     container_name: pomogutkids
+    restart: always
     volumes:
       - ./rel_kids:/src2
     expose:
