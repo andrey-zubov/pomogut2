@@ -1,10 +1,10 @@
-version: "3"
+version: "3.6"
 
 services:
   nginx:
     image: nginx
     container_name: nginx_chat_orig
-    restart: unless-stopped
+    restart: always
     networks:
       nginx_net:
     #networks:
@@ -21,17 +21,17 @@ services:
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
       # - /var/www/httpd-cert/www-root:/etc/ssl
-    depends_on:
-      - web3
-      - web2
-      - web1
+#    depends_on:
+#      - web3
+#      - web2
+#      - web1
     command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
 
   certbot:
     # Новый контейнер, который запуститься вместе с nginx
     container_name: certbot
     image: certbot/certbot
-    restart: unless-stopped
+    restart: always
     # Образ берется с docker hub
     networks:
       nginx_net:
@@ -39,25 +39,29 @@ services:
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
       # Подключаем к той-же сети, что и остальные контейнеры
+    depends_on:
+      - web3
+      - web2
+      - web1
     entrypoint:  "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
 
-  bot:
-    build:
-      context: .
-      dockerfile: ButonBotDjango/compose/django/Dockerfile
-    container_name: telegram-bot_orig
-    restart: always
-    networks:
-      nginx_net:
-    #    networks:
-    #      - botnet
-    volumes:
-      - ./ButonBotDjango/ButonBotDjango:/src3
-    expose:
-      - 8300
-    command: sh -c
-      "echo hello world && python3 help_bot/telega.py"
+#  bot:
+#    build:
+#      context: .
+#      dockerfile: ButonBotDjango/compose/django/Dockerfile
+#    container_name: telegram-bot_orig
+#    restart: always
+#    networks:
+#      nginx_net:
+#    #    networks:
+#    #      - botnet
+#    volumes:
+#      - ./ButonBotDjango/ButonBotDjango:/src3
+#    expose:
+#      - 8300
+#    command: sh -c
+#      "echo hello world && python3 help_bot/telega.py"
 
   web3:
     build:
