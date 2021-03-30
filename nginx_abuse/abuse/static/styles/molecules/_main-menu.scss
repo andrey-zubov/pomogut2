@@ -15,6 +15,8 @@
       .link {
         padding: 0 10px;
         position: relative;
+        font-weight: bold;
+        text-shadow: 1px 1px 1px black;
 
         &::after {
           content: "";
@@ -93,6 +95,15 @@
           &::after {
             content: none;
           }
+        }
+      }
+    }
+
+    &__links {
+      li {
+        .link {
+          font-weight: normal;
+          text-shadow: none;
         }
       }
     }
