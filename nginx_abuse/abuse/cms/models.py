@@ -426,15 +426,15 @@ Page.create_content_type(FooterSection, regions=('footer',))
 
 class Vacancy(models.Model):
     class Meta:
-        verbose_name = 'Вакансия'
-        verbose_name_plural = "Вакансии"
+        verbose_name = 'Орган соц.защиты'
+        verbose_name_plural = "Органы соц.защиты"
 
     title = models.CharField(
         max_length=256,
         verbose_name='Название'
     )
     description = models.TextField(
-        verbose_name="описание вакансии",
+        verbose_name="описание",
         blank=True,
         null=True
     )
